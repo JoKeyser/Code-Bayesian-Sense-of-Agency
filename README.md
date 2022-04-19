@@ -12,15 +12,15 @@ This supplementary information contains the MATLAB source codes that were used t
 
 Following is the order in which the main codes should be compiled and executed:
 
-1. create_SimulationData.m.
-2. find_muAO.m
-3. compute_PXisPrcShfts.m.
+1. [create_SimulationData.m](create_SimulationData.m).
+2. [find_muAO.m](find_muAO.m).
+3. [compute_PXisPrcShfts.m](compute_PXisPrcShfts.m).
    The plots that were generated here were shown in Figs. 2 and 5b.
-4. compute_PerTrialPrcShfts.m.
+4. [compute_PerTrialPrcShfts.m](compute_PerTrialPrcShfts.m).
    The plots were shown in Figs. 3b, 3c, 3d and 3e, as well as 4c and 4d.
-5. compute_CCEPXi1.m.
+5. [compute_CCEPXi1.m](compute_CCEPXi1.m).
    The plots that were generated from this were shown in Figs. 4a and 6a.
-6. compute_PerTrialCCE.m.
+6. [compute_PerTrialCCE.m](compute_PerTrialCCE.m).
    The plots were shown in Figs. 4b and 6b.
 
 The descriptions and objectives of each of the above are written in their codes.
@@ -28,13 +28,13 @@ Note that to generate the results that correspond to the two intentional binding
 
 Lastly, the following auxiliary source codes are called by the main codes described above:
 
-1. soa_IBexperiment.m
-2. soa_IBTargets.m
-3. soa_InitMatrix.m
-4. soa_sortMatrices.m
-5. soa_plotPrcShfts.m
-6. soa_plotErrorBars.m
-7. soa_plotBehaviors.m
+1. [soa_IBexperiment.m](soa_IBexperiment.m)
+2. [soa_IBTargets.m](soa_IBTargets.m)
+3. [soa_InitMatrix.m](soa_InitMatrix.m)
+4. [soa_sortMatrices.m](soa_sortMatrices.m)
+5. [soa_plotPrcShfts.m](soa_plotPrcShfts.m)
+6. [soa_plotErrorBars.m](soa_plotErrorBars.m)
+7. [soa_plotBehaviors.m](soa_plotBehaviors.m)
 
 
 ## Reference
