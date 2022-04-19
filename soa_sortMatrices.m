@@ -2,6 +2,7 @@
 % Copyright
 %   Lab for Neural Computation and Adaptation
 %   RIKEN Center for Brain Science
+%
 % Objective: Sort the cotents of the matrices
 
 function [sortedMatrix] = soa_sortMatrices(vectMatrix, sortIndx1, sortIndx2, sortIndx3)
