@@ -22,7 +22,7 @@
 
 STARTPAGE=2  # set to page number of first page of source pdf
 ENDPAGE=22  # set to page number of last page of source pdf
-SOURCE=paper/supplementary_code.pdf
+SOURCE=supplementary_code.pdf
 OUTPUT=raw-ocr-code.txt  # choose name of the output text file
 RESOLUTION=300  # you can tweak the resolution
 
