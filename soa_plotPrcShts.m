@@ -38,6 +38,7 @@ elseif experiment == 2
     lgnd.FontSize = 18;
     set(lgnd.BoxFace, 'ColorType', 'truecoloralpha', 'ColorData', uint8(255*[1; 1; 1; 0.8]));
 end
+
 set(gca,'FontSize', fontsize);
 set(gca, 'Box', 'on');
 set(lgnd, 'Color', 'none');
