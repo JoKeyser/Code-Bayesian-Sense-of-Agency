@@ -6,7 +6,7 @@
 % Objective: Return the means and standard deviations of the reported
 %            baseline action and outcome timing judgment errors
 
-function [mu_A, sigma_A, mu_0, sigma_0] = soa_IBexperiment(experiment_case, condition)
+function [mu_A, sigma_A, mu_O, sigma_O] = soa_IBexperiment(experiment_case, condition)
 
 if experiment_case == 1
     % Haggard et al., 2002 (Nat Neurosci): Seminal intentional binding experiment
