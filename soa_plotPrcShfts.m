@@ -6,7 +6,7 @@
 % Objective: Graph the action and outcome perceptual shifts as functions of
 %       the strenth of the causal prior
 
-function F = soa_plotPrcShts(experiment, arrPrcShftA, arrPrcShftO, arrPXi1, fontsize)
+function F = soa_plotPrcShfts(experiment, arrPrcShftA, arrPrcShftO, arrPXi1, fontsize)
 
 F = figure;
 linewidth = 2;

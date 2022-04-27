@@ -117,7 +117,7 @@ end
 
 % Plot and store the perceptual shifts and action-outcome binding
 
-soa_plotPrcShts(ExpR, arrPrcShftA, arrPrcShftO, arrPXi1, fontsize);
+soa_plotPrcShfts(ExpR, arrPrcShftA, arrPrcShftO, arrPXi1, fontsize);
 fnamePrcShft = sprintf('Exp%d_PXisPrcShfts.png',ExpR);
 saveas(gcf,fnamePrcShft);
 
