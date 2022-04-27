@@ -26,7 +26,7 @@ tAp=0; dist_tAtO=250; tOp=tAp+dist_tAtO;          % Actual physical stimulus tim
 
 % Optimal condition-independent parameters
 muAO    = 230;
-SigmaAO = 10;
+sigmaAO = 10;
 
 % Interval length in consideration
 T = 250;                                          % Large enough but finite constant
