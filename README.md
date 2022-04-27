@@ -1,6 +1,15 @@
-# A Bayesian psychophysics model of sense of agency
+# Code for a Bayesian psychophysics model of sense of agency
 
-Supplementary Source Codes
+TODO-List
+- Explanation about the intent of this repository.
+    - Include link to [changelog.md](changelog.md).
+
+---
+
+_Below is a transcript of the first supplementary page, with two minor changes:_
+_i) file names are linked to their contents, ii) the references 3 and 22 were added._
+
+## Supplementary Source Codes
 
 For the manuscript "A Bayesian psychophysics model of sense of agency"
 
@@ -24,7 +33,7 @@ Following is the order in which the main codes should be compiled and executed:
    The plots were shown in Figs. 4b and 6b.
 
 The descriptions and objectives of each of the above are written in their codes.
-Note that to generate the results that correspond to the two intentional binding experiments that were studied, the variable `Expr` should be assigned the value `1` and `2` for Haggard et al.'s (Ref [3]) and Wolpe et al.'s (Ref [22]) studies, respectively.
+Note that to generate the results that correspond to the two intentional binding experiments that were studied, the variable `Expr` should be assigned the value `1` and `2` for Haggard et al.'s (Ref 3) and Wolpe et al.'s (Ref 22) studies, respectively.
 
 Lastly, the following auxiliary source codes are called by the main codes described above:
 
@@ -37,10 +46,17 @@ Lastly, the following auxiliary source codes are called by the main codes descri
 7. [soa_plotBehaviors.m](soa_plotBehaviors.m)
 
 
-## Reference
+### References
 
 - Legaspi, R., & Toyoizumi, T. (2019).
   A Bayesian psychophysics model of sense of agency.
   _Nature Communications, 10(1), 4250._
   <https://doi.org/10.1038/s41467-019-12170-0>
-
+- Ref 3:
+  Haggard, P., Clark, S. & Kalogeras, J. (2002).
+  Voluntary action and conscious awareness.
+  _Nat. Neurosci._ 5, 383–385.
+- Ref 22:
+  Wolpe, N., Haggard, P., Siebner, H. R. & Rowe, J. B. (2013).
+  Cue integration and the perception of action in intentional binding.
+  _Exp. Brain Res._ 229, 467–474.
