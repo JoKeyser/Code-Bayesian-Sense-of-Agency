@@ -1,1 +1,11 @@
 *.m~
+*.swp
+/Exp1Cond1_Vec_taoA.csv
+/Exp1Cond1_Vec_taoO.csv
+/Exp1Cond2_Vec_taoA.csv
+/Exp1Cond2_Vec_taoO.csv
+/Exp1Cond3_Vec_taoA.csv
+/Exp1Cond3_Vec_taoO.csv
+/Exp1_PXisPrcShfts.png
+/Exp1_arrPrcShftA.csv
+/Exp1_arrPrcShftO.csv
