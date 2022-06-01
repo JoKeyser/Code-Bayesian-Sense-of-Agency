@@ -54,7 +54,7 @@ for CondBO = 1:numCond
         else PXi_1 = 0.5;
         end
     end
-    
+
     PXi_0 = 1 - PXi_1;
 
     % Read from files taoA and taoO values derived from a Gaussian distribution
@@ -88,7 +88,7 @@ end
 
 % Plot and store trial-to-trial CCE as function of temporl disparity
 
-sortedtaol = Vec_taolI;
+sortedtaoI = Vec_taoI;
 [sortedtaoI(1,:), sortIndx1] = sort(Vec_taoI(1,:));
 [sortedtaoI(2,:), sortIndx2] = sort(Vec_taoI(2,:));
 [sortedtaoI(3,:), sortIndx3] = sort(Vec_taoI(3,:));
@@ -96,4 +96,4 @@ sortedtaol = Vec_taolI;
 sortedCCE = soa_sortMatrices(Vec_CCE, sortIndx1, sortIndx2, sortIndx3);
 soa_plotErrorBars(ExpR, sortedtaoI, sortedCCE, fontsize, 1, sizeBin);
 fnameCCE = sprintf('Exp%d_perTrialCCE.png',ExpR);
-saveas(gcf,fnameCCE) ;
+saveas(gcf,fnameCCE);

@@ -112,7 +112,7 @@ sortedOpPrcShfts = soa_sortMatrices(Vec_OpPrcShfts, sortIndx1, sortIndx2, sortIn
 sortedBsPrcShfts = soa_sortMatrices(Vec_BsPrcShfts, sortIndx1, sortIndx2, sortIndx3);
 
 soa_plotErrorBars(ExpR, sortedtaoI, sortedPrcShftA, fontsize, 1, sizeBin);
-fnamePrcShft = sprintf('Exp%d_perTrialPrcShftA. png',ExpR);
+fnamePrcShft = sprintf('Exp%d_perTrialPrcShftA.png',ExpR);
 saveas(gcf,fnamePrcShft);
 soa_plotErrorBars(ExpR, sortedtaoI, sortedPrcShftO, fontsize, 1, sizeBin);
 fnamePrcShft = sprintf('Exp%d_perTrialPrcShftO.png',ExpR);
