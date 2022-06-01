@@ -128,7 +128,7 @@ Exp1_arrPrcShftO.csv
 Exp1_PXisPrcShfts.png
 ```
 
-![](figures/Exp1_PXisPrcShfts.png)
+<img src="figures/Exp1_PXisPrcShfts.png" width=300px />
 
 NOTE: The script generates 2 plots per run, but only stores the second, because the file name is repeated (compare lines 121 and 125 of the transcript, or page 6 of the supplementary code):
 
@@ -286,17 +286,20 @@ Exp1_perTrialPrcShftA.png
 Exp1_perTrialPrcShftO.png
 ```
 
-![](figures/Exp1_perTrialBaselinePrcShfts.png)
-![](figures/EExp1_perTrialOperantPrcShfts.png)
-![](figures/EExp1_perTrialPrcShftA.png)
-![](figures/EExp1_perTrialPrcShftO.png)
+<img src="figures/Exp1_perTrialBaselinePrcShfts.png" width=300px />
+
+<img src="figures/Exp1_perTrialOperantPrcShfts.png" width=300px />
+
+<img src="figures/Exp1_perTrialPrcShftA.png" width=300px />
+
+<img src="figures/Exp1_perTrialPrcShftO.png" width=300px />
 
 
 ### Output of `compute_CCEPXi1.m`:
 
 The script saves one plot, `Exp1_CCEPXi.png`.
 
-![](figures/Exp1_CCEPXi.png)
+<img src="figures/Exp1_CCEPXi.png" width=300px />
 
 The console output was:
 
@@ -369,11 +372,11 @@ Condition 3	 P(Xi=1): 0.00
 CCE        :	 0.00e+00(0.00e+00)
 ```
 
+
 ### Output of `compute_PerTrialCCE.m`
 
-The script saves one plot, `Exp1_perTrialCCE.png`:
+The script saved one plot, `Exp1_perTrialCCE.png`:
 
-![](figures/Exp1_perTrialCCE.png)
-
+<img src="figures/Exp1_perTrialCCE.png" width=300px />
 
 ## FIXME: Add outputs with ExpR = 2.
