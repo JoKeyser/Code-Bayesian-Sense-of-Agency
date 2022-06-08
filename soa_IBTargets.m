@@ -4,14 +4,13 @@
 %   RIKEN Center for Brain Science
 %
 % Objective: Return the reported action and outcome perceptual shifts
-%               for the operant conditions
+%            for the operant conditions.
 
 function [trgtPrcShftA, trgtPrcShftO] = soa_IBTargets(experiment, condition)
 
 if experiment == 1
-    % Haggard et al., 2002 (Nat Neurosci): Seminal intentional binding experiment
-    %      Different keypress (i.e., the action) conditions
-
+    % Haggard et al. 2002 (Nat Neurosci): Seminal intentional binding experiment
+    %      Different keypress (i.e., the action) conditions.
     if condition == 1
         trgtPrcShftA =  15;
         trgtPrcShftO = -46;
@@ -22,11 +21,9 @@ if experiment == 1
         trgtPrcShftA = -7;
         trgtPrcShftO = -8;
     end
-
 elseif experiment == 2
-    % Wolpe et al. 2013 (Exp Brain Res): Uncertainty is with the outcome
-    %       Different tone (i.e., the outcome) conditions
-
+    % Wolpe et al. 2013 (Exp Brain Res): Uncertainty is with the outcome.
+    %       Different tone (i.e., the outcome) conditions.
     if condition == 1
         trgtPrcShftA =  39;
         trgtPrcShftO = -51;
@@ -37,4 +34,6 @@ elseif experiment == 2
         trgtPrcShftA =   32;
         trgtPrcShftO = -105;
     end
+end
+
 end

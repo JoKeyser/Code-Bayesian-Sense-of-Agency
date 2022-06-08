@@ -47,4 +47,16 @@ Subsequently, the following manual changes were made:
 ### Change summary for branch `main`
 
 The purpose of branch `main` is to provide a slightly "more convenient" version of the code.
-You can find a summary of changes in the file `changelog.md` in the `main` branch.
+Most changes are cosmetic and opinionated, to subjectively increase readability.
+
+Here is a summary of the changes.
+
+- Make use of whitespace more consistend, e.g. add spaces before commas and around inline operators, etc.
+- Add newlines and reorder to get a single instruction per line.
+- Limit line width to 80 characters.
+- Mark all function calls with parentheses `()`.
+- End functions with `end`.
+- Fix typos in comments.
+- Appease Matlab's linter.
+- Remove code repetitions of semantically unconditional cases.
+- Replace multi-line comments with single-line comments.
