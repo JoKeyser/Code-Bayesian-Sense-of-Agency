@@ -1,17 +1,37 @@
 *.m~
 *.swp
+# generated output data from create_SimulationData.m:
 /Exp1Cond1_Vec_taoA.csv
 /Exp1Cond1_Vec_taoO.csv
 /Exp1Cond2_Vec_taoA.csv
 /Exp1Cond2_Vec_taoO.csv
 /Exp1Cond3_Vec_taoA.csv
 /Exp1Cond3_Vec_taoO.csv
+/Exp2Cond1_Vec_taoA.csv
+/Exp2Cond1_Vec_taoO.csv
+/Exp2Cond2_Vec_taoA.csv
+/Exp2Cond2_Vec_taoO.csv
+/Exp2Cond3_Vec_taoA.csv
+/Exp2Cond3_Vec_taoO.csv
+# generated data and figures from compute_PXisPrcShfts.m:
 /Exp1_PXisPrcShfts.png
 /Exp1_arrPrcShftA.csv
 /Exp1_arrPrcShftO.csv
+/Exp2_PXisPrcShfts.png
+/Exp2_arrPrcShftA.csv
+/Exp2_arrPrcShftO.csv
+# generated figures from compute_PerTrialPrcShfts.m:
 /Exp1_perTrialBaselinePrcShfts.png
 /Exp1_perTrialOperantPrcShfts.png
 /Exp1_perTrialPrcShftA.png
 /Exp1_perTrialPrcShftO.png
+/Exp2_perTrialBaselinePrcShfts.png
+/Exp2_perTrialOperantPrcShfts.png
+/Exp2_perTrialPrcShftA.png
+/Exp2_perTrialPrcShftO.png
+# generated figures from compute_CCEPXi1.m
 /Exp1_CCEPXi.png
+/Exp2_CCEPXi.png
+# generated figures from compute_PerTrialCCE.m:
 /Exp1_perTrialCCE.png
+/Exp2_perTrialCCE.png

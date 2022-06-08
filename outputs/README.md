@@ -8,6 +8,7 @@ NOTE: The scripts were run twice: Once with setting `ExpR = 1` and once with `Ex
 The generated data files are saved the in subfolder [generated_data](generated_data).
 The resulting figures are saved in the subfolder [figures](figures).
 
+
 ## Settings
 
 The scripts were executed on a machine running Ubuntu 20.04,
@@ -29,9 +30,13 @@ Statistics and Machine Learning Toolbox               Version 12.2        (R2021
 The order of script execution was from top to bottom of this log.
 (Which is the same order as in the project README.)
 
-## With setting `ExpR = 1`
 
-### Output of `create_SimulationData.m`:
+## Outputs with setting `ExpR = 1`
+
+First, the output with setting `ExpR = 1` in every script.
+Further below are the outputs with setting `ExpR = 2`.
+
+### Output of `create_SimulationData.m`
 
 The script generates 6 files that you can compare with your own run:
 
@@ -118,7 +123,7 @@ Optimal muAO is 220 ms.
 ```
 
 
-### Output of `compute_PXisPrcShfts.m`:
+### Output of `compute_PXisPrcShfts.m`
 
 The script generated two data files and a plot:
 
@@ -295,7 +300,7 @@ Exp1_perTrialPrcShftO.png
 <img src="figures/Exp1_perTrialPrcShftO.png" width=300px />
 
 
-### Output of `compute_CCEPXi1.m`:
+### Output of `compute_CCEPXi1.m`
 
 The script saves one plot, `Exp1_CCEPXi.png`.
 
@@ -379,4 +384,364 @@ The script saved one plot, `Exp1_perTrialCCE.png`:
 
 <img src="figures/Exp1_perTrialCCE.png" width=300px />
 
-## FIXME: Add outputs with ExpR = 2.
+
+---
+
+
+## Outputs with setting `ExpR = 2`
+
+Below is the output with setting `ExpR = 2` in every script.
+
+Remember to reset the random seed if you want to compare the output documented below with your own:
+
+```matlab
+rng(1,'twister');
+```
+	
+### Output of `create_SimulationData.m`
+	
+The script generates 6 files that you can compare with your own run:
+
+```
+Exp2Cond1_Vec_taoA.csv
+Exp2Cond1_Vec_taoO.csv
+Exp2Cond2_Vec_taoA.csv
+Exp2Cond2_Vec_taoO.csv
+Exp2Cond3_Vec_taoA.csv
+Exp2Cond3_Vec_taoO.csv
+```
+
+The Matlab console output was:
+
+```
+============== tao DataSet Exp 2 Cond 1 ================
+taoA [-303.11, 277.62] taoO [51.22, 556.36]
+tao statistics: -7.88 (75.19)	 285.18 (61.03)
+taoA elements: 35000 taoO elements: 35000
+==============================================
+
+============== tao DataSet Exp 2 Cond 2 ================
+taoA [-323.70, 339.61] taoO [18.18, 566.00]
+tao statistics: -8.29 (75.47)	 296.38 (66.28)
+taoA elements: 35000 taoO elements: 35000
+==============================================
+
+============== tao DataSet Exp 2 Cond 3 ================
+taoA [-381.98, 329.84] taoO [-15.28, 685.85]
+tao statistics: -7.17 (75.37)	 344.51 (89.80)
+taoA elements: 35000 taoO elements: 35000
+==============================================
+```
+
+### Output of `find_muAO.m`
+
+The console output was:
+
+```
+Action and outcome perceptual shifts per condition given muAO=190
+Condition 1:	 2.0(2.00)	 -1.0(1.00)
+Condition 2:	 2.0(1.00)	 -2.0(1.00)
+Condition 3:	 2.0(1.00)	 -2.0(2.00)
+model estimation error:	32.00:
+
+Action and outcome perceptual shifts per condition given muAO=200
+Condition 1:	 1.0(2.00)	 -1.0(1.00)
+Condition 2:	 2.0(1.00)	 -1.0(1.00)
+Condition 3:	 2.0(1.00)	 -2.0(2.00)
+model estimation error:	32.33:
+
+Action and outcome perceptual shifts per condition given muAO=210
+Condition 1:	 1.0(2.00)	 -1.0(1.00)
+Condition 2:	 1.0(1.00)	 -1.0(1.00)
+Condition 3:	 2.0(1.00)	 -2.0(2.00)
+model estimation error:	32.67:
+
+Action and outcome perceptual shifts per condition given muAO=220
+Condition 1:	 1.0(2.00)	 -1.0(1.00)
+Condition 2:	 1.0(1.00)	 -1.0(1.00)
+Condition 3:	 1.0(1.00)	 -2.0(2.00)
+model estimation error:	33.00:
+
+Action and outcome perceptual shifts per condition given muAO=230
+Condition 1:	 1.0(2.00)	 -1.0(1.00)
+Condition 2:	 1.0(1.00)	 -1.0(1.00)
+Condition 3:	 1.0(1.00)	 -2.0(2.00)
+model estimation error:	33.00:
+
+Action and outcome perceptual shifts per condition given muAO=240
+Condition 1:	 1.0(2.00)	 -1.0(1.00)
+Condition 2:	 1.0(1.00)	 -1.0(1.00)
+Condition 3:	 1.0(1.00)	 -1.0(2.00)
+model estimation error:	33.00:
+
+Action and outcome perceptual shifts per condition given muAO=250
+Condition 1:	 1.0(2.00)	 -1.0(1.00)
+Condition 2:	 1.0(1.00)	 -1.0(1.00)
+Condition 3:	 1.0(1.00)	 -1.0(2.00)
+model estimation error:	33.00:
+
+Optimal muAO is 190 ms.
+```
+
+
+### Output of `compute_PXisPrcShfts.m`
+
+The script generated two data files and a plot:
+
+```
+Exp2_arrPrcShftA.csv
+Exp2_arrPrcShftO.csv
+Exp2_PXisPrcShfts.png
+```
+
+<img src="figures/Exp2_PXisPrcShfts.png" width=300px />
+
+NOTE: The script generates 2 plots per run, but only stores the second, because the file name is repeated (compare lines 121 and 125 of the transcript, or page 6 of the supplementary code):
+
+```matlab
+fnamePrcShft = sprintf('Exp%d_PXisPrcShfts.png',ExpR);
+```
+
+The console output was:
+
+```
+Condition 1  	 P(Xi=1): 1.00
+uPercShfts   :	 Error in action  perceptual shift: 1.00
+Error in outcome perceptual shift: 26.00
+
+Condition 1  	 P(Xi=1): 0.90
+uPercShfts   :	 Error in action  perceptual shift: 3.00
+Error in outcome perceptual shift: 27.00
+
+Condition 1  	 P(Xi=1): 0.80
+uPercShfts   :	 Error in action  perceptual shift: 5.00
+Error in outcome perceptual shift: 28.00
+
+Condition 1  	 P(Xi=1): 0.70
+uPercShfts   :	 Error in action  perceptual shift: 7.00
+Error in outcome perceptual shift: 30.00
+
+Condition 1  	 P(Xi=1): 0.60
+uPercShfts   :	 Error in action  perceptual shift: 9.00
+Error in outcome perceptual shift: 31.00
+
+Condition 1  	 P(Xi=1): 0.50
+uPercShfts   :	 Error in action  perceptual shift: 11.00
+Error in outcome perceptual shift: 32.00
+
+Condition 1  	 P(Xi=1): 0.40
+uPercShfts   :	 Error in action  perceptual shift: 14.00
+Error in outcome perceptual shift: 35.00
+
+Condition 1  	 P(Xi=1): 0.30
+uPercShfts   :	 Error in action  perceptual shift: 19.00
+Error in outcome perceptual shift: 38.00
+
+Condition 1  	 P(Xi=1): 0.20
+uPercShfts   :	 Error in action  perceptual shift: 26.00
+Error in outcome perceptual shift: 43.00
+
+Condition 1  	 P(Xi=1): 0.10
+uPercShfts   :	 Error in action  perceptual shift: 38.00
+Error in outcome perceptual shift: 50.00
+
+Condition 1  	 P(Xi=1): 0.00
+uPercShfts   :	 Error in action  perceptual shift: 39.00
+Error in outcome perceptual shift: 51.00
+
+
+Condition 2  	 P(Xi=1): 1.00
+uPercShfts   :	 Error in action  perceptual shift: 11.00
+Error in outcome perceptual shift: 33.00
+
+Condition 2  	 P(Xi=1): 0.90
+uPercShfts   :	 Error in action  perceptual shift: 9.00
+Error in outcome perceptual shift: 34.00
+
+Condition 2  	 P(Xi=1): 0.80
+uPercShfts   :	 Error in action  perceptual shift: 7.00
+Error in outcome perceptual shift: 36.00
+
+Condition 2  	 P(Xi=1): 0.70
+uPercShfts   :	 Error in action  perceptual shift: 5.00
+Error in outcome perceptual shift: 37.00
+
+Condition 2  	 P(Xi=1): 0.60
+uPercShfts   :	 Error in action  perceptual shift: 2.00
+Error in outcome perceptual shift: 39.00
+
+Condition 2  	 P(Xi=1): 0.50
+uPercShfts   :	 Error in action  perceptual shift: 1.00
+Error in outcome perceptual shift: 41.00
+
+Condition 2  	 P(Xi=1): 0.40
+uPercShfts   :	 Error in action  perceptual shift: 4.00
+Error in outcome perceptual shift: 44.00
+
+Condition 2  	 P(Xi=1): 0.30
+uPercShfts   :	 Error in action  perceptual shift: 10.00
+Error in outcome perceptual shift: 48.00
+
+Condition 2  	 P(Xi=1): 0.20
+uPercShfts   :	 Error in action  perceptual shift: 18.00
+Error in outcome perceptual shift: 55.00
+
+Condition 2  	 P(Xi=1): 0.10
+uPercShfts   :	 Error in action  perceptual shift: 30.00
+Error in outcome perceptual shift: 64.00
+
+Condition 2  	 P(Xi=1): 0.00
+uPercShfts   :	 Error in action  perceptual shift: 31.00
+Error in outcome perceptual shift: 65.00
+
+
+Condition 3  	 P(Xi=1): 1.00
+uPercShfts   :	 Error in action  perceptual shift: 18.00
+Error in outcome perceptual shift: 34.00
+
+Condition 3  	 P(Xi=1): 0.90
+uPercShfts   :	 Error in action  perceptual shift: 14.00
+Error in outcome perceptual shift: 39.00
+
+Condition 3  	 P(Xi=1): 0.80
+uPercShfts   :	 Error in action  perceptual shift: 11.00
+Error in outcome perceptual shift: 44.00
+
+Condition 3  	 P(Xi=1): 0.70
+uPercShfts   :	 Error in action  perceptual shift: 8.00
+Error in outcome perceptual shift: 48.00
+
+Condition 3  	 P(Xi=1): 0.60
+uPercShfts   :	 Error in action  perceptual shift: 5.00
+Error in outcome perceptual shift: 52.00
+
+Condition 3  	 P(Xi=1): 0.50
+uPercShfts   :	 Error in action  perceptual shift: 1.00
+Error in outcome perceptual shift: 58.00
+
+Condition 3  	 P(Xi=1): 0.40
+uPercShfts   :	 Error in action  perceptual shift: 4.00
+Error in outcome perceptual shift: 64.00
+
+Condition 3  	 P(Xi=1): 0.30
+uPercShfts   :	 Error in action  perceptual shift: 10.00
+Error in outcome perceptual shift: 73.00
+
+Condition 3  	 P(Xi=1): 0.20
+uPercShfts   :	 Error in action  perceptual shift: 18.00
+Error in outcome perceptual shift: 85.00
+
+Condition 3  	 P(Xi=1): 0.10
+uPercShfts   :	 Error in action  perceptual shift: 31.00
+Error in outcome perceptual shift: 104.00
+
+Condition 3  	 P(Xi=1): 0.00
+uPercShfts   :	 Error in action  perceptual shift: 32.00
+Error in outcome perceptual shift: 105.00
+```
+
+
+### Output of `compute_PerTrialPrcShfts.m`
+
+The script generates four plots:
+
+```
+Exp2_perTrialBaselinePrcShfts.png
+Exp2_perTrialOperantPrcShfts.png
+Exp2_perTrialPrcShftA.png
+Exp2_perTrialPrcShftO.png
+```
+
+<img src="figures/Exp2_perTrialBaselinePrcShfts.png" width=300px />
+
+<img src="figures/Exp2_perTrialOperantPrcShfts.png" width=300px />
+
+<img src="figures/Exp2_perTrialPrcShftA.png" width=300px />
+
+<img src="figures/Exp2_perTrialPrcShftO.png" width=300px />
+
+
+### Output of `compute_CCEPXi1.m`
+
+The script saves one plot, `Exp2_CCEPXi.png`.
+
+<img src="figures/Exp2_CCEPXi.png" width=300px />
+
+The console output was:
+
+```
+Condition 1	 P(Xi=1): 1.00
+CCE        :	 3.38e-04(3.88e-17)
+Condition 1	 P(Xi=1): 0.90
+CCE        :	 2.69e-04(5.74e-05)
+Condition 1	 P(Xi=1): 0.80
+CCE        :	 2.25e-04(6.22e-05)
+Condition 1	 P(Xi=1): 0.70
+CCE        :	 1.87e-04(6.01e-05)
+Condition 1	 P(Xi=1): 0.60
+CCE        :	 1.55e-04(5.49e-05)
+Condition 1	 P(Xi=1): 0.50
+CCE        :	 1.25e-04(4.79e-05)
+Condition 1	 P(Xi=1): 0.40
+CCE        :	 9.68e-05(3.97e-05)
+Condition 1	 P(Xi=1): 0.30
+CCE        :	 7.08e-05(3.06e-05)
+Condition 1	 P(Xi=1): 0.20
+CCE        :	 4.61e-05(2.08e-05)
+Condition 1	 P(Xi=1): 0.10
+CCE        :	 2.26e-05(1.06e-05)
+Condition 1	 P(Xi=1): 0.00
+CCE        :	 0.00e+00(0.00e+00)
+Condition 2	 P(Xi=1): 1.00
+CCE        :	 3.23e-04(1.51e-17)
+Condition 2	 P(Xi=1): 0.90
+CCE        :	 2.51e-04(5.85e-05)
+Condition 2	 P(Xi=1): 0.80
+CCE        :	 2.08e-04(6.25e-05)
+Condition 2	 P(Xi=1): 0.70
+CCE        :	 1.72e-04(5.98e-05)
+Condition 2	 P(Xi=1): 0.60
+CCE        :	 1.41e-04(5.41e-05)
+Condition 2	 P(Xi=1): 0.50
+CCE        :	 1.13e-04(4.68e-05)
+Condition 2	 P(Xi=1): 0.40
+CCE        :	 8.77e-05(3.85e-05)
+Condition 2	 P(Xi=1): 0.30
+CCE        :	 6.38e-05(2.95e-05)
+Condition 2	 P(Xi=1): 0.20
+CCE        :	 4.14e-05(2.00e-05)
+Condition 2	 P(Xi=1): 0.10
+CCE        :	 2.02e-05(1.01e-05)
+Condition 2	 P(Xi=1): 0.00
+CCE        :	 0.00e+00(0.00e+00)
+Condition 3	 P(Xi=1): 1.00
+CCE        :	 2.77e-04(5.22e-17)
+Condition 3	 P(Xi=1): 0.90
+CCE        :	 1.97e-04(6.17e-05)
+Condition 3	 P(Xi=1): 0.80
+CCE        :	 1.57e-04(6.12e-05)
+Condition 3	 P(Xi=1): 0.70
+CCE        :	 1.26e-04(5.58e-05)
+Condition 3	 P(Xi=1): 0.60
+CCE        :	 1.01e-04(4.86e-05)
+Condition 3	 P(Xi=1): 0.50
+CCE        :	 7.96e-05(4.07e-05)
+Condition 3	 P(Xi=1): 0.40
+CCE        :	 6.04e-05(3.25e-05)
+Condition 3	 P(Xi=1): 0.30
+CCE        :	 4.32e-05(2.42e-05)
+Condition 3	 P(Xi=1): 0.20
+CCE        :	 2.76e-05(1.60e-05)
+Condition 3	 P(Xi=1): 0.10
+CCE        :	 1.32e-05(7.92e-06)
+Condition 3	 P(Xi=1): 0.00
+CCE        :	 0.00e+00(0.00e+00)
+```
+
+
+### Output of `compute_PerTrialCCE.m`
+
+The script saved one plot, `Exp2_perTrialCCE.png`:
+
+<img src="figures/Exp2_perTrialCCE.png" width=300px />
+
