@@ -1,8 +1,15 @@
-# Code for a Bayesian psychophysics model of sense of agency
+# Executable code: A Bayesian psychophysics model of sense of agency
 
-TODO-List
-- Explanation about the intent of this repository.
-    - Include link to [changelog.md](changelog.md).
+The intent of this repository is to provide executable Matlab code, derived from the Supplementary Source Codes of the publication:
+
+Legaspi, Roberto, & Toyoizumi, Toyoizumi (2019).  
+A Bayesian psychophysics model of sense of agency.  
+_Nature Communications, 10(1), 4250_.  
+<https://doi.org/10.1038/s41467-019-12170-0>
+
+Please note: Any and all credit should go to the original authors, see their license terms in [license.txt](license.txt) and page 11 of the publication.
+
+Please refer to to [changelog.md](changelog.md) for a summary of differences between the files in this repository and the supplementary code of the publication.
 
 ---
 

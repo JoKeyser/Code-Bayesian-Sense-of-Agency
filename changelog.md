@@ -23,7 +23,7 @@ For an exhaustive set of all changes, you can inspect the Git log or compare Git
 To the extent possible under the law, all changes are placed in the public domain under the CC0 license.
 Please refer to <https://creativecommons.org/share-your-work/public-domain/cc0/> for the legal text.
 
-All credit should go to the original authors, see their license terms in [README.md](README.md) and [license.txt](license.txt).
+Any and all credit should go to the original authors, see their license terms in [README.md](README.md) and [license.txt](license.txt).
 
 ## Summary of changes
 
