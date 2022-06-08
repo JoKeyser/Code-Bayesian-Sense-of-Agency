@@ -41,7 +41,7 @@ arrAOBinding = zeros(numCond,size_pXi1);
 
 for CondBO = 1:numCond
 
-    % Read from files taoA and taoOO values derived from a Gaussian distribution
+    % Read from files taoA and taoO values derived from a Gaussian distribution
     fnametaoA = sprintf('Exp%dCond%d_Vec_taoA.csv',ExpR,CondBO);
     fnametaoO = sprintf('Exp%dCond%d_Vec_taoO.csv',ExpR,CondBO);
     Vec_taoA = dlmread(fnametaoA);
@@ -68,7 +68,7 @@ for CondBO = 1:numCond
             % Compute for the posterior-ratio
             Z1 = sqrt(2*pi)*sigmaAO*T;
             Z0 = T^2;
-            Theta = log((PXi_1*Z0) /(PXi_0*Z1));
+            Theta = log((PXi_1*Z0)/(PXi_0*Z1));
             sigmaTot2 = sigmaA^2 + sigmaO^2 + sigmaAO^2;
             r = exp(Theta - ((taoO-taoA-muAO)^2/(2*sigmaTot2)));
 
@@ -83,8 +83,8 @@ for CondBO = 1:numCond
                 Xihat=0;
             end
             
-            Vec_PrcShftA(1, indx_tao) = tAhat - taoA;
-            Vec_PrcShftO(1, indx_tao) = tOhat - taoO;
+            Vec_PrcShftA(1, indx_tao)  = tAhat - taoA;
+            Vec_PrcShftO(1, indx_tao)  = tOhat - taoO;
             Vec_AOBinding(1, indx_tao) = 250 + (tOhat-taoO) - (tAhat-taoA);
         end
 
