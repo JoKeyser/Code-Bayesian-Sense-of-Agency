@@ -26,7 +26,7 @@ for muAO = [190 200 210 220 230 240 250]
 
     for CondBO = 1:numCond
 
-        % Read from files taoA and tao0O values derived from a Gaussian distribution
+        % Read from files taoA and taoO values derived from a Gaussian distribution
         fnametaoA = sprintf('Exp%dCond%d_Vec_taoA.csv',ExpR,CondBO);
         fnametaoO = sprintf('Exp%dCond%d_Vec_taoO.csv',ExpR,CondBO);
         Vec_taoA  = dlmread(fnametaoA);
