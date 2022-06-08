@@ -7,7 +7,13 @@ A Bayesian psychophysics model of sense of agency.
 _Nature Communications, 10(1), 4250_.  
 <https://doi.org/10.1038/s41467-019-12170-0>
 
-Please note: Any and all credit should go to the original authors, see their license terms in [license.txt](license.txt) and page 11 of the publication.
+
+Please note the following:
+
+- This repository has 2 branches.
+    - Branch `transcript` aims to provide an unchanged transcript of the supplementary code.
+    - Branch `main` aims to provide a more "convenient" version of the code, featuring shorter lines, fixed typos, etc.
+- Any and all credit should go to the original authors, see their license terms in [license.txt](license.txt) and page 11 of the publication.
 
 Please refer to to [changelog.md](changelog.md) for a summary of differences between the files in this repository and the supplementary code of the publication.
 
