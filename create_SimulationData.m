@@ -13,6 +13,11 @@ close('all')
 % Uncomment to make random number generation repeatable:
 % rng(1, 'twister');
 
+% Choose whether to use the Statistics and Machine Learning Toolbox; the
+% original version of the code uses toolbox functions to generate and
+% optionally inspect the samples (see below).
+Flag_Use_Statistics_Toolbox = false;
+
 %%% Simulation settings
 % Set number of taoA and taoO instances to be generated.
 taoInstances = 35000;
@@ -32,19 +37,20 @@ for CondBO = 1:numCond
     % Initialize baseline parameters with reported empirical data.
     [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
 
-    % Generate from Gaussian distributions.
-    % NOTE: Requires Statistics Toolbox.
-    Vec_taoA = normrnd(tAp + muA, sigmaA, [1, taoInstances]);
-    Vec_taoO = normrnd(tOp + muO, sigmaO, [1, taoInstances]);
-    % FIXME, Alternative: sigmaA .* randn(1,numInstances) + (tAp + muA);
-    %                     sigmaO .* randn(1,numInstances) + (tOp + muO);
-
-    % Check the generated data.
-    % NOTE: Requires Statistics Toolbox.
-    % figure(); normplot(Vec_taoA);
-    % figure(); normplot(Vec_taoO);
-    % figure(); histfit(Vec_taoA);
-    % figure(); histfit(Vec_taoO);
+    % Generate samples from Gaussian distributions.
+    if Flag_Use_Statistics_Toolbox  % flag is set above
+        % NOTE: Requires the Statistics and Machine Learning Toolbox.
+        Vec_taoA = normrnd(tAp + muA, sigmaA, [1, taoInstances]);
+        Vec_taoO = normrnd(tOp + muO, sigmaO, [1, taoInstances]);
+        % Optionally, check the generated samples.
+%         figure(); normplot(Vec_taoA);
+%         figure(); normplot(Vec_taoO);
+%         figure(); histfit(Vec_taoA);
+%         figure(); histfit(Vec_taoO);
+    else
+        Vec_taoA = (tAp + muA) + sigmaA .* randn(1, taoInstances);
+        Vec_taoO = (tOp + muO) + sigmaO .* randn(1, taoInstances);
+    end
 
     % Generate statistics.
     sizeVec_taoA = numel(Vec_taoA);

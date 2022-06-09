@@ -23,7 +23,7 @@ taoInstances = 35000;
 % Choose experimental set-up.
 %   ExpR = 1: Haggard et al. (2002), numCond = 3; (Vol, Invol, Sham)
 %   ExpR = 2: Wolpe et al. (2013),   numCond = 3; (Low, Int, High)
-ExpR = 2;
+ExpR = 1;
 numCond = 3;
 
 % Actual physical stimulus timings (in ms).

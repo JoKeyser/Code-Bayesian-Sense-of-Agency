@@ -3,6 +3,9 @@ The log is intended for you to compare it to your own execution of the code.
 
 NOTE: Before running, Matlab's random seed was set with `rng(1,'twister');`, as suggested in a comment in `create_SimulationData.m`, to make results reproducible.
 
+NOTE: The samples were generated with `randn()` instead of `normrnd()` from the Statistics Toolbox, by setting `Flag_Use_Statistics_Toolbox = false`.
+You can compare the outputs here with those in branch `transcript` that used the Toolbox.
+
 NOTE: The scripts were run twice: Once with setting `ExpR = 1` and once with `ExpR = 2`.
 
 The generated data files are saved the in subfolder [generated_data](generated_data).
@@ -17,14 +20,11 @@ here the (slightly redacted) output of `ver()` in Matlab:
 ```
 >> ver()
 -----------------------------------------------------------------------------------------------------
-MATLAB Version: 9.11.0.1873467 (R2021b) Update 3
-Operating System: Linux 5.4.0-113-generic #127-Ubuntu SMP Wed May 18 14:30:56 UTC 2022 x86_64
+MATLAB Version: 9.7.0.1737446 (R2019b) Update 9
+Operating System: Linux 5.4.0-117-generic #132-Ubuntu SMP Thu Jun 2 00:39:06 UTC 2022 x86_64
 Java Version: Java 1.8.0_202-b08 with Oracle Corporation Java HotSpot(TM) 64-Bit Server VM mixed mode
 -----------------------------------------------------------------------------------------------------
-MATLAB                                                Version 9.11        (R2021b)
-Optimization Toolbox                                  Version 9.2         (R2021b)
-Signal Processing Toolbox                             Version 8.7         (R2021b)
-Statistics and Machine Learning Toolbox               Version 12.2        (R2021b)
+MATLAB                                                Version 9.7         (R2019b)
 ```
 
 The order of script execution was from top to bottom of this log.
@@ -52,19 +52,20 @@ Exp1Cond3_Vec_taoO.csv
 The Matlab console output was:
 
 ```
-============== tao DataSet Exp 1 Cond 1 ================
+
+============= tao DataSet Exp 1 Cond 1 ===============
 taoA [-253.70, 257.35] taoO [-10.93, 585.29]
 tao statistics: 6.11 (66.17)	 265.21 (72.04)
 taoA elements: 35000 taoO elements: 35000
 ==============================================
 
-============== tao DataSet Exp 1 Cond 2 ================
+============= tao DataSet Exp 1 Cond 2 ===============
 taoA [-266.38, 467.69] taoO [-38.08, 559.54]
 tao statistics: 82.68 (83.52)	 265.42 (72.30)
 taoA elements: 35000 taoO elements: 35000
 ==============================================
 
-============== tao DataSet Exp 1 Cond 3 ================
+============= tao DataSet Exp 1 Cond 3 ===============
 taoA [-356.94, 383.36] taoO [-23.22, 537.68]
 tao statistics: 32.86 (78.38)	 264.61 (71.84)
 taoA elements: 35000 taoO elements: 35000
@@ -77,43 +78,43 @@ taoA elements: 35000 taoO elements: 35000
 The console output was:
 
 ```
-Action and outcome perceptual shifts per condition given muAO=190
+Action + outcome perceptual shifts per condition given muAO = 190
 Condition 1:	 1.0(1.00)	 -1.0(1.00)
 Condition 2:	 -0.0(2.00)	 0.0(1.00)
 Condition 3:	 1.0(1.00)	 -1.0(1.00)
 model estimation error:	16.33:
 
-Action and outcome perceptual shifts per condition given muAO=200
+Action + outcome perceptual shifts per condition given muAO = 200
 Condition 1:	 1.0(1.00)	 -1.0(1.00)
 Condition 2:	 -0.0(2.00)	 0.0(1.00)
 Condition 3:	 0.0(1.00)	 -0.0(1.00)
 model estimation error:	16.00:
 
-Action and outcome perceptual shifts per condition given muAO=210
+Action + outcome perceptual shifts per condition given muAO = 210
 Condition 1:	 1.0(1.00)	 -1.0(1.00)
 Condition 2:	 -0.0(2.00)	 0.0(1.00)
 Condition 3:	 0.0(1.00)	 -0.0(1.00)
 model estimation error:	16.00:
 
-Action and outcome perceptual shifts per condition given muAO=220
+Action + outcome perceptual shifts per condition given muAO = 220
 Condition 1:	 1.0(1.00)	 -1.0(1.00)
 Condition 2:	 -1.0(2.00)	 0.0(1.00)
 Condition 3:	 0.0(1.00)	 -0.0(1.00)
 model estimation error:	15.67:
 
-Action and outcome perceptual shifts per condition given muAO=230
+Action + outcome perceptual shifts per condition given muAO = 230
 Condition 1:	 0.0(1.00)	 -0.0(1.00)
 Condition 2:	 -1.0(2.00)	 1.0(1.00)
 Condition 3:	 0.0(1.00)	 -0.0(1.00)
 model estimation error:	16.00:
 
-Action and outcome perceptual shifts per condition given muAO=240
+Action + outcome perceptual shifts per condition given muAO = 240
 Condition 1:	 0.0(1.00)	 -0.0(1.00)
 Condition 2:	 -1.0(2.00)	 1.0(1.00)
 Condition 3:	 -0.0(1.00)	 0.0(1.00)
 model estimation error:	16.00:
 
-Action and outcome perceptual shifts per condition given muAO=250
+Action + outcome perceptual shifts per condition given muAO = 250
 Condition 1:	 0.0(1.00)	 -0.0(1.00)
 Condition 2:	 -1.0(2.00)	 1.0(1.00)
 Condition 3:	 -0.0(1.00)	 0.0(1.00)
@@ -310,7 +311,7 @@ The console output was:
 
 ```
 Condition 1	 P(Xi=1): 1.00
-CCE        :	 3.29e-04(6.84e-17)
+CCE        :	 3.29e-04(7.83e-17)
 Condition 1	 P(Xi=1): 0.90
 CCE        :	 2.71e-04(4.46e-05)
 Condition 1	 P(Xi=1): 0.80
@@ -332,7 +333,7 @@ CCE        :	 2.36e-05(9.37e-06)
 Condition 1	 P(Xi=1): 0.00
 CCE        :	 0.00e+00(0.00e+00)
 Condition 2	 P(Xi=1): 1.00
-CCE        :	 2.94e-04(5.99e-17)
+CCE        :	 2.94e-04(1.79e-16)
 Condition 2	 P(Xi=1): 0.90
 CCE        :	 2.35e-04(4.45e-05)
 Condition 2	 P(Xi=1): 0.80
@@ -354,7 +355,7 @@ CCE        :	 1.85e-05(7.77e-06)
 Condition 2	 P(Xi=1): 0.00
 CCE        :	 0.00e+00(0.00e+00)
 Condition 3	 P(Xi=1): 1.00
-CCE        :	 3.02e-04(4.14e-17)
+CCE        :	 3.02e-04(1.10e-16)
 Condition 3	 P(Xi=1): 0.90
 CCE        :	 2.48e-04(3.81e-05)
 Condition 3	 P(Xi=1): 0.80
@@ -414,19 +415,19 @@ Exp2Cond3_Vec_taoO.csv
 The Matlab console output was:
 
 ```
-============== tao DataSet Exp 2 Cond 1 ================
+============= tao DataSet Exp 2 Cond 1 ===============
 taoA [-303.11, 277.62] taoO [51.22, 556.36]
 tao statistics: -7.88 (75.19)	 285.18 (61.03)
 taoA elements: 35000 taoO elements: 35000
 ==============================================
 
-============== tao DataSet Exp 2 Cond 2 ================
+============= tao DataSet Exp 2 Cond 2 ===============
 taoA [-323.70, 339.61] taoO [18.18, 566.00]
 tao statistics: -8.29 (75.47)	 296.38 (66.28)
 taoA elements: 35000 taoO elements: 35000
 ==============================================
 
-============== tao DataSet Exp 2 Cond 3 ================
+============= tao DataSet Exp 2 Cond 3 ===============
 taoA [-381.98, 329.84] taoO [-15.28, 685.85]
 tao statistics: -7.17 (75.37)	 344.51 (89.80)
 taoA elements: 35000 taoO elements: 35000
@@ -438,48 +439,49 @@ taoA elements: 35000 taoO elements: 35000
 The console output was:
 
 ```
-Action and outcome perceptual shifts per condition given muAO=190
+Action + outcome perceptual shifts per condition given muAO = 190
 Condition 1:	 2.0(2.00)	 -1.0(1.00)
 Condition 2:	 2.0(1.00)	 -2.0(1.00)
 Condition 3:	 2.0(1.00)	 -2.0(2.00)
 model estimation error:	32.00:
 
-Action and outcome perceptual shifts per condition given muAO=200
+Action + outcome perceptual shifts per condition given muAO = 200
 Condition 1:	 1.0(2.00)	 -1.0(1.00)
 Condition 2:	 2.0(1.00)	 -1.0(1.00)
 Condition 3:	 2.0(1.00)	 -2.0(2.00)
 model estimation error:	32.33:
 
-Action and outcome perceptual shifts per condition given muAO=210
+Action + outcome perceptual shifts per condition given muAO = 210
 Condition 1:	 1.0(2.00)	 -1.0(1.00)
 Condition 2:	 1.0(1.00)	 -1.0(1.00)
 Condition 3:	 2.0(1.00)	 -2.0(2.00)
 model estimation error:	32.67:
 
-Action and outcome perceptual shifts per condition given muAO=220
+Action + outcome perceptual shifts per condition given muAO = 220
 Condition 1:	 1.0(2.00)	 -1.0(1.00)
 Condition 2:	 1.0(1.00)	 -1.0(1.00)
 Condition 3:	 1.0(1.00)	 -2.0(2.00)
 model estimation error:	33.00:
 
-Action and outcome perceptual shifts per condition given muAO=230
+Action + outcome perceptual shifts per condition given muAO = 230
 Condition 1:	 1.0(2.00)	 -1.0(1.00)
 Condition 2:	 1.0(1.00)	 -1.0(1.00)
 Condition 3:	 1.0(1.00)	 -2.0(2.00)
 model estimation error:	33.00:
 
-Action and outcome perceptual shifts per condition given muAO=240
+Action + outcome perceptual shifts per condition given muAO = 240
 Condition 1:	 1.0(2.00)	 -1.0(1.00)
 Condition 2:	 1.0(1.00)	 -1.0(1.00)
 Condition 3:	 1.0(1.00)	 -1.0(2.00)
 model estimation error:	33.00:
 
-Action and outcome perceptual shifts per condition given muAO=250
+Action + outcome perceptual shifts per condition given muAO = 250
 Condition 1:	 1.0(2.00)	 -1.0(1.00)
 Condition 2:	 1.0(1.00)	 -1.0(1.00)
 Condition 3:	 1.0(1.00)	 -1.0(2.00)
 model estimation error:	33.00:
 
+Optimal muAO is 190 ms.
 Optimal muAO is 190 ms.
 ```
 
@@ -671,7 +673,7 @@ The console output was:
 
 ```
 Condition 1	 P(Xi=1): 1.00
-CCE        :	 3.38e-04(3.88e-17)
+CCE        :	 3.38e-04(1.30e-16)
 Condition 1	 P(Xi=1): 0.90
 CCE        :	 2.69e-04(5.74e-05)
 Condition 1	 P(Xi=1): 0.80
@@ -693,7 +695,7 @@ CCE        :	 2.26e-05(1.06e-05)
 Condition 1	 P(Xi=1): 0.00
 CCE        :	 0.00e+00(0.00e+00)
 Condition 2	 P(Xi=1): 1.00
-CCE        :	 3.23e-04(1.51e-17)
+CCE        :	 3.23e-04(2.70e-16)
 Condition 2	 P(Xi=1): 0.90
 CCE        :	 2.51e-04(5.85e-05)
 Condition 2	 P(Xi=1): 0.80
@@ -715,7 +717,7 @@ CCE        :	 2.02e-05(1.01e-05)
 Condition 2	 P(Xi=1): 0.00
 CCE        :	 0.00e+00(0.00e+00)
 Condition 3	 P(Xi=1): 1.00
-CCE        :	 2.77e-04(5.22e-17)
+CCE        :	 2.77e-04(7.10e-17)
 Condition 3	 P(Xi=1): 0.90
 CCE        :	 1.97e-04(6.17e-05)
 Condition 3	 P(Xi=1): 0.80

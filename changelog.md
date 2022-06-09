@@ -47,16 +47,21 @@ Subsequently, the following manual changes were made:
 ### Change summary for branch `main`
 
 The purpose of branch `main` is to provide a slightly "more convenient" version of the code.
-Most changes are cosmetic and opinionated, to subjectively increase readability.
+None of the changes are intended to change the simulation results.
+Below is a summary of the changes.
 
-Here is a summary of the changes.
+A few semantic changes aim to increase code clarity and flexibility:
 
-- Make use of whitespace more consistend, e.g. add spaces before commas and around inline operators, etc.
+- Add flag to choose whether to use Statistics and Machine Learning Toolbox.
+- Remove code repetitions of semantically unconditional cases.
+
+The rest are opinionated, cosmetic changes to subjectively increase readability.
+
+- More consistent use of whitespaces; e.g. add spaces before commas and around inline operators, etc.
 - Add newlines and reorder to get a single instruction per line.
 - Limit line width to 80 characters.
 - Mark all function calls with parentheses `()`.
 - End functions with `end`.
 - Fix typos in comments.
 - Appease Matlab's linter.
-- Remove code repetitions of semantically unconditional cases.
 - Replace multi-line comments with single-line comments.
