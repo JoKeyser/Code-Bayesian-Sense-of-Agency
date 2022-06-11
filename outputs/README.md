@@ -52,7 +52,6 @@ Exp1Cond3_Vec_taoO.csv
 The Matlab console output was:
 
 ```
-
 ============= tao DataSet Exp 1 Cond 1 ===============
 taoA [-253.70, 257.35] taoO [-10.93, 585.29]
 tao statistics: 6.11 (66.17)	 265.21 (72.04)
@@ -79,48 +78,48 @@ The console output was:
 
 ```
 Action + outcome perceptual shifts per condition given muAO = 190
-Condition 1:	 1.0(1.00)	 -1.0(1.00)
-Condition 2:	 -0.0(2.00)	 0.0(1.00)
-Condition 3:	 1.0(1.00)	 -1.0(1.00)
-model estimation error:	16.33:
+Condition 1:	 31.0(44.00)	 -37.0(53.00)
+Condition 2:	 -4.0(62.00)	 3.0(47.00)
+Condition 3:	 22.0(57.00)	 -19.0(48.00)
+model estimation error:	22.67:
 
 Action + outcome perceptual shifts per condition given muAO = 200
-Condition 1:	 1.0(1.00)	 -1.0(1.00)
-Condition 2:	 -0.0(2.00)	 0.0(1.00)
-Condition 3:	 0.0(1.00)	 -0.0(1.00)
-model estimation error:	16.00:
+Condition 1:	 27.0(44.00)	 -32.0(53.00)
+Condition 2:	 -10.0(62.00)	 7.0(47.00)
+Condition 3:	 17.0(57.00)	 -14.0(48.00)
+model estimation error:	17.67:
 
 Action + outcome perceptual shifts per condition given muAO = 210
-Condition 1:	 1.0(1.00)	 -1.0(1.00)
-Condition 2:	 -0.0(2.00)	 0.0(1.00)
-Condition 3:	 0.0(1.00)	 -0.0(1.00)
-model estimation error:	16.00:
+Condition 1:	 22.0(44.00)	 -26.0(53.00)
+Condition 2:	 -15.0(62.00)	 12.0(47.00)
+Condition 3:	 12.0(57.00)	 -10.0(48.00)
+model estimation error:	12.67:
 
 Action + outcome perceptual shifts per condition given muAO = 220
-Condition 1:	 1.0(1.00)	 -1.0(1.00)
-Condition 2:	 -1.0(2.00)	 0.0(1.00)
-Condition 3:	 0.0(1.00)	 -0.0(1.00)
-model estimation error:	15.67:
+Condition 1:	 18.0(44.00)	 -21.0(53.00)
+Condition 2:	 -21.0(62.00)	 16.0(47.00)
+Condition 3:	 6.0(57.00)	 -5.0(48.00)
+model estimation error:	7.33:
 
 Action + outcome perceptual shifts per condition given muAO = 230
-Condition 1:	 0.0(1.00)	 -0.0(1.00)
-Condition 2:	 -1.0(2.00)	 1.0(1.00)
-Condition 3:	 0.0(1.00)	 -0.0(1.00)
-model estimation error:	16.00:
+Condition 1:	 13.0(44.00)	 -16.0(53.00)
+Condition 2:	 -27.0(62.00)	 20.0(47.00)
+Condition 3:	 1.0(57.00)	 -1.0(48.00)
+model estimation error:	3.33:
 
 Action + outcome perceptual shifts per condition given muAO = 240
-Condition 1:	 0.0(1.00)	 -0.0(1.00)
-Condition 2:	 -1.0(2.00)	 1.0(1.00)
-Condition 3:	 -0.0(1.00)	 0.0(1.00)
-model estimation error:	16.00:
+Condition 1:	 9.0(44.00)	 -10.0(53.00)
+Condition 2:	 -32.0(62.00)	 24.0(47.00)
+Condition 3:	 -4.0(57.00)	 4.0(48.00)
+model estimation error:	4.67:
 
 Action + outcome perceptual shifts per condition given muAO = 250
-Condition 1:	 0.0(1.00)	 -0.0(1.00)
-Condition 2:	 -1.0(2.00)	 1.0(1.00)
-Condition 3:	 -0.0(1.00)	 0.0(1.00)
-model estimation error:	16.00:
+Condition 1:	 4.0(44.00)	 -5.0(53.00)
+Condition 2:	 -38.0(62.00)	 29.0(47.00)
+Condition 3:	 -10.0(57.00)	 8.0(48.00)
+model estimation error:	8.33:
 
-Optimal muAO is 220 ms.
+Optimal muAO is 230 ms.
 ```
 
 
@@ -440,49 +439,48 @@ The console output was:
 
 ```
 Action + outcome perceptual shifts per condition given muAO = 190
-Condition 1:	 2.0(2.00)	 -1.0(1.00)
-Condition 2:	 2.0(1.00)	 -2.0(1.00)
-Condition 3:	 2.0(1.00)	 -2.0(2.00)
-model estimation error:	32.00:
+Condition 1:	 61.0(58.00)	 -41.0(38.00)
+Condition 2:	 64.0(56.00)	 -50.0(43.00)
+Condition 3:	 66.0(48.00)	 -95.0(68.00)
+model estimation error:	29.67:
 
 Action + outcome perceptual shifts per condition given muAO = 200
-Condition 1:	 1.0(2.00)	 -1.0(1.00)
-Condition 2:	 2.0(1.00)	 -1.0(1.00)
-Condition 3:	 2.0(1.00)	 -2.0(2.00)
-model estimation error:	32.33:
+Condition 1:	 55.0(58.00)	 -37.0(38.00)
+Condition 2:	 58.0(56.00)	 -45.0(43.00)
+Condition 3:	 62.0(48.00)	 -89.0(68.00)
+model estimation error:	24.33:
 
 Action + outcome perceptual shifts per condition given muAO = 210
-Condition 1:	 1.0(2.00)	 -1.0(1.00)
-Condition 2:	 1.0(1.00)	 -1.0(1.00)
-Condition 3:	 2.0(1.00)	 -2.0(2.00)
-model estimation error:	32.67:
+Condition 1:	 49.0(58.00)	 -33.0(38.00)
+Condition 2:	 53.0(56.00)	 -41.0(43.00)
+Condition 3:	 58.0(48.00)	 -83.0(68.00)
+model estimation error:	19.33:
 
 Action + outcome perceptual shifts per condition given muAO = 220
-Condition 1:	 1.0(2.00)	 -1.0(1.00)
-Condition 2:	 1.0(1.00)	 -1.0(1.00)
-Condition 3:	 1.0(1.00)	 -2.0(2.00)
-model estimation error:	33.00:
+Condition 1:	 44.0(58.00)	 -29.0(38.00)
+Condition 2:	 47.0(56.00)	 -37.0(43.00)
+Condition 3:	 54.0(48.00)	 -77.0(68.00)
+model estimation error:	14.33:
 
 Action + outcome perceptual shifts per condition given muAO = 230
-Condition 1:	 1.0(2.00)	 -1.0(1.00)
-Condition 2:	 1.0(1.00)	 -1.0(1.00)
-Condition 3:	 1.0(1.00)	 -2.0(2.00)
-model estimation error:	33.00:
+Condition 1:	 38.0(58.00)	 -25.0(38.00)
+Condition 2:	 42.0(56.00)	 -32.0(43.00)
+Condition 3:	 50.0(48.00)	 -71.0(68.00)
+model estimation error:	10.00:
 
 Action + outcome perceptual shifts per condition given muAO = 240
-Condition 1:	 1.0(2.00)	 -1.0(1.00)
-Condition 2:	 1.0(1.00)	 -1.0(1.00)
-Condition 3:	 1.0(1.00)	 -1.0(2.00)
-model estimation error:	33.00:
+Condition 1:	 32.0(58.00)	 -21.0(38.00)
+Condition 2:	 36.0(56.00)	 -28.0(43.00)
+Condition 3:	 45.0(48.00)	 -65.0(68.00)
+model estimation error:	8.33:
 
 Action + outcome perceptual shifts per condition given muAO = 250
-Condition 1:	 1.0(2.00)	 -1.0(1.00)
-Condition 2:	 1.0(1.00)	 -1.0(1.00)
-Condition 3:	 1.0(1.00)	 -1.0(2.00)
-model estimation error:	33.00:
+Condition 1:	 26.0(58.00)	 -17.0(38.00)
+Condition 2:	 31.0(56.00)	 -24.0(43.00)
+Condition 3:	 41.0(48.00)	 -60.0(68.00)
+model estimation error:	7.33:
 
-Optimal muAO is 190 ms.
-Optimal muAO is 190 ms.
+Optimal muAO is 250 ms.
 ```
 
 
