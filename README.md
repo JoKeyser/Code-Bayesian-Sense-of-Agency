@@ -19,8 +19,8 @@ Please refer to to [changelog.md](changelog.md) for a summary of differences bet
 
 ---
 
-_Below is a transcript of the first supplementary page, with two minor changes:_
-_i) file names are linked to their contents, ii) the references 3 and 22 were added._
+*Below is a transcript of the first supplementary page, with three minor changes*:_
+*i) file names are linked to their content, ii) references 3 and 22 were added, iii) removed function `soa_InitMatrix.m` (which only wrapped `zeros()`).*
 
 ## Supplementary Source Codes
 
@@ -50,13 +50,12 @@ Note that to generate the results that correspond to the two intentional binding
 
 Lastly, the following auxiliary source codes are called by the main codes described above:
 
-1. [soa_IBexperiment.m](soa_IBexperiment.m)
-2. [soa_IBTargets.m](soa_IBTargets.m)
-3. [soa_InitMatrix.m](soa_InitMatrix.m)
-4. [soa_sortMatrices.m](soa_sortMatrices.m)
-5. [soa_plotPrcShfts.m](soa_plotPrcShfts.m)
-6. [soa_plotErrorBars.m](soa_plotErrorBars.m)
-7. [soa_plotBehaviors.m](soa_plotBehaviors.m)
+- [soa_IBexperiment.m](soa_IBexperiment.m)
+- [soa_IBTargets.m](soa_IBTargets.m)
+- [soa_sortMatrices.m](soa_sortMatrices.m)
+- [soa_plotPrcShfts.m](soa_plotPrcShfts.m)
+- [soa_plotErrorBars.m](soa_plotErrorBars.m)
+- [soa_plotBehaviors.m](soa_plotBehaviors.m)
 
 
 ### References

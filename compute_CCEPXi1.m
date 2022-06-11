@@ -58,7 +58,7 @@ for CondBO = 1:numCond
     for PXi_1 = UB:-INC:LB
 
         PXi_0 = 1 - PXi_1;
-        Vec_CCE = soa_InitMatrix(1, taoInstances);
+        Vec_CCE = zeros(1, taoInstances);
 
         for indx_tao = 1:taoInstances
 

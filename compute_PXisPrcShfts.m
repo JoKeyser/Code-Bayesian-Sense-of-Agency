@@ -59,9 +59,9 @@ for CondBO = 1:numCond
         PXi_0 = 1 - PXi_1;
 
         % Matrices to track optimal action and outcome estimates
-        Vec_PrcShftA = soa_InitMatrix(1, taoInstances);
-        Vec_PrcShftO = soa_InitMatrix(1, taoInstances);
-        Vec_AOBinding = soa_InitMatrix(1, taoInstances);
+        Vec_PrcShftA = zeros(1, taoInstances);
+        Vec_PrcShftO = zeros(1, taoInstances);
+        Vec_AOBinding = zeros(1, taoInstances);
 
         for indx_tao = 1:taoInstances
 

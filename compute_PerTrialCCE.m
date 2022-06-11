@@ -36,9 +36,9 @@ sigmaAO = 10;
 T = 250;  % large enough but finite constant
 
 % Data Matrices
-Vec_CCE = soa_InitMatrix(numCond, taoInstances);
-Vec_taoI = soa_InitMatrix(numCond, taoInstances);
-Vec_Pc = soa_InitMatrix(numCond, taoInstances);
+Vec_CCE = zeros(numCond, taoInstances);
+Vec_taoI = zeros(numCond, taoInstances);
+Vec_Pc = zeros(numCond, taoInstances);
 
 for CondBO = 1:numCond
 
