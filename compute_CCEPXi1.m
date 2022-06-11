@@ -16,7 +16,7 @@ fontsize = 20;
 sizeBin = 200;
 
 %%% Simulation Settings
-% Set number of taoA and taoO instances to be generated
+% Set number of taoA and taoO instances (loaded from pre-generated file)
 taoInstances = 35000;
 
 % Choose experimental set-up.
@@ -45,6 +45,9 @@ arrPXi1 = LB:INC:UB;
 size_pXi1 = numel(arrPXi1);
 arrCCE = zeros(numCond, size_pXi1);
 
+% Define Sigmoid function (see Methods).
+Sigmoid = @(x) 1 / (1 + exp(-x));
+
 for CondBO = 1:numCond
 
     % Read from files taoA and taoO values derived from a Gaussian distribution
@@ -62,23 +65,23 @@ for CondBO = 1:numCond
 
         for indx_tao = 1:taoInstances
 
-            % Do for each pair of taoA and taoO
+            % Do for each pair of taoA and taoO.
             taoA = Vec_taoA(indx_tao);
             taoO = Vec_taoO(indx_tao);
 
-            % Get the reported empricial baseline parameters
+            % Get the reported empirical baseline parameters.
             [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
 
-            % Compute CCE
+            % Compute CCE (see Methods).
             Z1 = sqrt(2 * pi) * sigmaAO * T;
             Z0 = T^2;
             Theta = log((PXi_1 * Z0) / (PXi_0 * Z1));
             sigmaTot2 = sigmaA^2 + sigmaO^2 + sigmaAO^2;
             X = Theta - ((taoO - taoA - muAO)^2 / (2 * sigmaTot2)) ...
                 + log(sigmaAO / sqrt(sigmaTot2));
-            Vec_CCE(1, indx_tao) = ( ...
-                sqrt(sigmaTot2) / (2 * pi * sigmaA * sigmaO * sigmaAO)) ...
-                * (1 / (1 + exp(-X)));
+            Vec_CCE(1, indx_tao) = ...
+                (sqrt(sigmaTot2) / (2 * pi * sigmaA * sigmaO * sigmaAO)) ...
+                * soa_Sigmoid(X);
         end
 
         uCCE = mean(Vec_CCE(1, :));
@@ -90,7 +93,7 @@ for CondBO = 1:numCond
     end
 end
 
-% Plot and store CCE as function of causal prior strength
+% Plot and store CCE as function of causal prior strength.
 soa_plotBehaviors(ExpR, arrCCE, arrPXi1, fontsize, 1);
 fnameCCEPXi = sprintf('Exp%d_CCEPXi.png', ExpR);
 saveas(gcf(), fnameCCEPXi);

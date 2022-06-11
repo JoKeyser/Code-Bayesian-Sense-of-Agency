@@ -43,13 +43,13 @@ for muAO = 190:10:250
         Vec_taoA = dlmread(fnametaoA);
         Vec_taoO = dlmread(fnametaoO);
 
-        % Get the reported empricial baseline parameters
+        % Get the reported empirical baseline parameters
         [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
 
         % Compute for sigma_Tot
         sigmaTot2 = sigmaA^2 + sigmaO^2 + sigmaAO^2;
 
-        % Compute the action and oputcome perceptual shifts
+        % Compute the action and outcome perceptual shifts
         Vec_PrcShftA =  (sigmaA * 2 / sigmaTot2) * (Vec_taoO - Vec_taoA - muAO);
         Vec_PrcShftO = -(sigmaO * 2 / sigmaTot2) * (Vec_taoO - Vec_taoA - muAO);
         uVec_PrcShftA = mean(Vec_PrcShftA);

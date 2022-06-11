@@ -83,14 +83,14 @@ for CondBO = 1:numCond
         % Get the reported empirical baseline parameters
         [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
 
-        % Compute for the posterior-ratio
+        % Compute for the posterior-ratio (see Methods)
         Z1 = sqrt(2 * pi) * sigmaAO * T;
         Z0 = T^2;
         Theta = log((PXi_1 * Z0) / (PXi_0 * Z1));
         sigmaTot2 = sigmaA^2 + sigmaO^2 + sigmaAO^2;
         r = exp(Theta - ((taoO - taoA - muAO)^2 / (2 * sigmaTot2)));
 
-        % Compute for strength of temporal binding
+        % Compute for strength of temporal binding (Eq. 3)
         if r > 1  % causal case
             tAhat = taoA + (sigmaA^2 / sigmaTot2) * (taoO - taoA - muAO);
             tOhat = taoO - (sigmaO^2 / sigmaTot2) * (taoO - taoA - muAO);

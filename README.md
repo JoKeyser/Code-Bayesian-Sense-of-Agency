@@ -19,8 +19,8 @@ Please refer to to [changelog.md](changelog.md) for a summary of differences bet
 
 ---
 
-*Below is a transcript of the first supplementary page, with three minor changes*:_
-*i) file names are linked to their content, ii) references 3 and 22 were added, iii) removed function `soa_InitMatrix.m` (which only wrapped `zeros()`).*
+*Below is a transcript of the first supplementary page, with some minor changes*:_
+*i) file names are linked to their content, ii) references 3 and 22 were added, iii) removed function `soa_InitMatrix.m` (which only wrapped `zeros()`), iv) add function `soa_Sigmoid.m`.*
 
 ## Supplementary Source Codes
 
@@ -56,6 +56,7 @@ Lastly, the following auxiliary source codes are called by the main codes descri
 - [soa_plotPrcShfts.m](soa_plotPrcShfts.m)
 - [soa_plotErrorBars.m](soa_plotErrorBars.m)
 - [soa_plotBehaviors.m](soa_plotBehaviors.m)
+- [soa_Sigmoid.m](soa_Sigmoid.m)
 
 
 ### References

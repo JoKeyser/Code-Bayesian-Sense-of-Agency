@@ -55,6 +55,8 @@ A few semantic changes aim to increase code clarity and flexibility:
 - Add flag to choose whether to use Statistics and Machine Learning Toolbox.
 - Remove code repetitions of semantically unconditional cases.
 - Replace wrapper function `soa_InitMatrix()` with `zeros()` and delete the file.
+- Add references paper equations in comments.
+- Add function `soa_Sigmoid()` as defined in Methods, to match expression in paper.
 
 The rest are opinionated, cosmetic changes to subjectively increase readability.
 

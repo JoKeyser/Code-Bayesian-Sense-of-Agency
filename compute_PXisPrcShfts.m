@@ -40,8 +40,8 @@ T = 250;  % large enough but finite constant
 
 % Data Matrices
 LB = 0.0; INC = 0.1; UB = 1.0;
-arrPXi1     = LB:INC:UB;
-size_pXi1   = numel(arrPXi1);
+arrPXi1 = LB:INC:UB;
+size_pXi1 = numel(arrPXi1);
 arrPrcShftA = zeros(numCond,size_pXi1);
 arrPrcShftO = zeros(numCond,size_pXi1);
 arrAOBinding = zeros(numCond,size_pXi1);
@@ -69,17 +69,17 @@ for CondBO = 1:numCond
             taoA = Vec_taoA(indx_tao);
             taoO = Vec_taoO(indx_tao);
 
-            % Get the reported empricial baseline parameters
+            % Get the reported empirical baseline parameters
             [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
 
-            % Compute for the posterior-ratio
+            % Compute for the posterior-ratio (see Methods)
             Z1 = sqrt(2 * pi) * sigmaAO * T;
             Z0 = T^2;
             Theta = log((PXi_1 * Z0) / (PXi_0 * Z1));
             sigmaTot2 = sigmaA^2 + sigmaO^2 + sigmaAO^2;
             r = exp(Theta - ((taoO - taoA - muAO)^2 / (2 * sigmaTot2)));
 
-            % Compute for strength of temporal binding
+            % Compute for strength of temporal binding (Eq. 3)
             if r > 1  % causal case
                 tAhat = taoA + (sigmaA^2 / sigmaTot2) * (taoO - taoA - muAO);
                 tOhat = taoO - (sigmaO^2 / sigmaTot2) * (taoO - taoA - muAO);
@@ -90,8 +90,8 @@ for CondBO = 1:numCond
                 Xihat = 0;
             end
             
-            Vec_PrcShftA(1, indx_tao)  = tAhat - taoA;
-            Vec_PrcShftO(1, indx_tao)  = tOhat - taoO;
+            Vec_PrcShftA(1, indx_tao) = tAhat - taoA;
+            Vec_PrcShftO(1, indx_tao) = tOhat - taoO;
             Vec_AOBinding(1, indx_tao) = 250 + (tOhat - taoO) - (tAhat - taoA);
         end
 

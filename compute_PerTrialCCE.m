@@ -14,8 +14,8 @@ close('all')
 fontsize = 20;
 sizeBin = 200;
 
-% Simulation Conditions
-taoInstances = 35000;  % Number of taoA and taoO instances to be generated
+% Simulation settings
+taoInstances = 35000;  % Number of taoA and taoO instances (loaded from file)
 
 % Choose experimental set-up.
 %   ExpR = 1: Haggard et al. (2002), numCond = 3; (Vol, Invol, Sham)
@@ -33,7 +33,7 @@ muAO = 230;
 sigmaAO = 10;
 
 % Interval length in consideration
-T = 250;  % large enough but finite constant
+T = 250;  % large enough but finite constant (see Methods)
 
 % Data Matrices
 Vec_CCE = zeros(numCond, taoInstances);
@@ -71,23 +71,23 @@ for CondBO = 1:numCond
 
     for indx_tao = 1:taoInstances
 
-        % Do for each pair of taoA and taoO
+        % Do for each pair of taoA and taoO.
         taoA = Vec_taoA(indx_tao);
         taoO = Vec_taoO(indx_tao);
 
-        % Get the reported empirical baseline parameters
+        % Get the reported empirical baseline parameters.
         [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
 
-        % Compute CCE
+        % Compute CCE (see Methods).
         Z1 = sqrt(2 * pi) * sigmaAO * T;
         Z0 = T^2;
         Theta = log((PXi_1 * Z0) / (PXi_0 * Z1));
         sigmaTot2 = sigmaA^2 + sigmaO^2 + sigmaAO^2;
         X = Theta - ((taoO - taoA - muAO)^2 / (2 * sigmaTot2)) ...
-            + log(sigmaAO/sqrt(sigmaTot2));
+            + log(sigmaAO / sqrt(sigmaTot2));
         Vec_CCE(CondBO, indx_tao) = ...
             (sqrt(sigmaTot2) / (2 * pi * sigmaA * sigmaO * sigmaAO)) ...
-            * ( 1 / (1 + exp(-X)));
+            * soa_Sigmoid(X);
 
         Vec_taoI(CondBO, indx_tao)  = taoO - taoA;
     end

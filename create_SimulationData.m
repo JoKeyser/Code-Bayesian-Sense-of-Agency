@@ -37,7 +37,7 @@ for CondBO = 1:numCond
     % Initialize baseline parameters with reported empirical data.
     [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
 
-    % Generate samples from Gaussian distributions.
+    % Generate samples from Gaussian distributions (first paragraph of Results).
     if Flag_Use_Statistics_Toolbox  % flag is set above
         % NOTE: Requires the Statistics and Machine Learning Toolbox.
         Vec_taoA = normrnd(tAp + muA, sigmaA, [1, taoInstances]);
@@ -52,7 +52,7 @@ for CondBO = 1:numCond
         Vec_taoO = (tOp + muO) + sigmaO .* randn(1, taoInstances);
     end
 
-    % Generate statistics.
+    % Generate sample statistics.
     sizeVec_taoA = numel(Vec_taoA);
     sizeVec_taoO = numel(Vec_taoO);
     taoA_min = min(Vec_taoA);
@@ -64,7 +64,7 @@ for CondBO = 1:numCond
     stdVectaoA = std(Vec_taoA);
     stdVectaoO = std(Vec_taoO);
 
-    % Print statistics and store generated simulation data.
+    % Print sample statistics and store generated simulation data.
     fprintf('\n============= tao DataSet Exp %d Cond %d ===============\n', ...
         ExpR, CondBO);
     fprintf('taoA [%0.2f, %0.2f] taoO [%0.2f, %0.2f]\n', ...
