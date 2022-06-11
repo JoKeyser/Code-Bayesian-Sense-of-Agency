@@ -49,9 +49,9 @@ for muAO = 190:10:250
         % Compute for sigma_Tot
         sigmaTot2 = sigmaA^2 + sigmaO^2 + sigmaAO^2;
 
-        % Compute the action and outcome perceptual shifts
-        Vec_PrcShftA =  (sigmaA * 2 / sigmaTot2) * (Vec_taoO - Vec_taoA - muAO);
-        Vec_PrcShftO = -(sigmaO * 2 / sigmaTot2) * (Vec_taoO - Vec_taoA - muAO);
+        % Compute the action and outcome perceptual shifts (Eq. 5)
+        Vec_PrcShftA = +(sigmaA^2 / sigmaTot2) * (Vec_taoO - Vec_taoA - muAO);
+        Vec_PrcShftO = -(sigmaO^2 / sigmaTot2) * (Vec_taoO - Vec_taoA - muAO);
         uVec_PrcShftA = mean(Vec_PrcShftA);
         uVec_PrcShftO = mean(Vec_PrcShftO);
         sdVec_PrcShftA = std(Vec_PrcShftA);

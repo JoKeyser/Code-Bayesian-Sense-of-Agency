@@ -79,7 +79,7 @@ for CondBO = 1:numCond
             sigmaTot2 = sigmaA^2 + sigmaO^2 + sigmaAO^2;
             r = exp(Theta - ((taoO - taoA - muAO)^2 / (2 * sigmaTot2)));
 
-            % Compute for strength of temporal binding (Eq. 3)
+            % Compute for strength of temporal binding (Eq. 5)
             if r > 1  % causal case
                 tAhat = taoA + (sigmaA^2 / sigmaTot2) * (taoO - taoA - muAO);
                 tOhat = taoO - (sigmaO^2 / sigmaTot2) * (taoO - taoA - muAO);
