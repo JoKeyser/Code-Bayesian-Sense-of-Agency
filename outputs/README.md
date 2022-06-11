@@ -282,22 +282,13 @@ Error in outcome perceptual shift: 8.00
 
 ### Output of `compute_PerTrialPrcShfts.m`
 
-The script generates four plots:
+The script generates four subplots in one figure:
 
 ```
-Exp1_perTrialBaselinePrcShfts.png
-Exp1_perTrialOperantPrcShfts.png
-Exp1_perTrialPrcShftA.png
-Exp1_perTrialPrcShftO.png
+Exp1_perTrialPrcShfts.png
 ```
 
-<img src="figures/Exp1_perTrialBaselinePrcShfts.png" width=300px />
-
-<img src="figures/Exp1_perTrialOperantPrcShfts.png" width=300px />
-
-<img src="figures/Exp1_perTrialPrcShftA.png" width=300px />
-
-<img src="figures/Exp1_perTrialPrcShftO.png" width=300px />
+<img src="figures/Exp1_perTrialPrcShfts.png" width=600px />
 
 
 ### Output of `compute_CCEPXi1.m`
@@ -643,22 +634,13 @@ Error in outcome perceptual shift: 105.00
 
 ### Output of `compute_PerTrialPrcShfts.m`
 
-The script generates four plots:
+The script generates four subplots in one figure:
 
 ```
-Exp2_perTrialBaselinePrcShfts.png
-Exp2_perTrialOperantPrcShfts.png
-Exp2_perTrialPrcShftA.png
-Exp2_perTrialPrcShftO.png
+Exp2_perTrialPrcShfts.png
 ```
 
-<img src="figures/Exp2_perTrialBaselinePrcShfts.png" width=300px />
-
-<img src="figures/Exp2_perTrialOperantPrcShfts.png" width=300px />
-
-<img src="figures/Exp2_perTrialPrcShftA.png" width=300px />
-
-<img src="figures/Exp2_perTrialPrcShftO.png" width=300px />
+<img src="figures/Exp2_perTrialPrcShfts.png" width=600px />
 
 
 ### Output of `compute_CCEPXi1.m`

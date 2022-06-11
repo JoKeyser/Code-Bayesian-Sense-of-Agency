@@ -6,7 +6,7 @@
 % Objective: Fit Haggard et al's data to find the optimal value for the free
 %            parameter P(Xi=1), muAO is 230 ms and sigmaAO is 10 ms.
 %            Plot the action and outcome perceptual shifts given P(Xi=1)
-%            in the range [0.0, 1.0] with 0.1 increments.
+%            in the range [0.0, 1.0] with 0.1 increments (see figure 2).
 
 % Clear all variables from workspace, clear command window, close all figures.
 clearvars()
@@ -14,10 +14,10 @@ clc()
 close('all')
 
 % Graph display fonts
-fontsize = 20;
+fontsize = 14;
 sizeBin = 200;
 
-% Simulation Conditions
+% Simulation settings
 taoInstances = 35000;  % Number of taoA and taoO instances to be generated
 
 % Choose experimental set-up.
@@ -126,11 +126,15 @@ for CondBO = 1:numCond
 end
 
 % Plot and store the perceptual shifts and action-outcome binding
+figure()
 soa_plotPrcShfts(ExpR, arrPrcShftA, arrPrcShftO, arrPXi1, fontsize);
 fnamePrcShft = sprintf('Exp%d_PXisPrcShfts.png', ExpR);
 saveas(gcf(), fnamePrcShft);
 
-soa_plotBehaviors(ExpR, arrAOBinding, arrPXi1, fontsize, 1);
+figure()
+lgd = soa_plotBehaviors(ExpR, arrAOBinding, arrPXi1, fontsize, 1);
+set(lgd, 'Location', 'NorthEast')
+ylabel('Perceptual shift intervals (ms)')
 fnamePrcShft = sprintf('Exp%d_PXisPrcShfts.png', ExpR);
 saveas(gcf(), fnamePrcShft);
 

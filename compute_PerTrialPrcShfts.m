@@ -13,7 +13,7 @@ clc()
 close('all')
 
 % Graph display fonts.
-fontsize = 20;
+fontsize = 14;
 sizeBin = 200;
 
 %%% Simulation Conditions
@@ -42,8 +42,8 @@ T = 250;  % large enough but finite constant
 Vec_PrcShftA = zeros(numCond, taoInstances);
 Vec_PrcShftO = zeros(numCond, taoInstances);
 Vec_taoI = zeros(numCond, taoInstances);
-Vec_OpPrcShfts = zeros(numCond, taoInstances);
-Vec_BsPrcShfts = zeros(numCond, taoInstances);
+Vec_OpPrcShft = zeros(numCond, taoInstances);
+Vec_BsPrcShft = zeros(numCond, taoInstances);
 
 for CondBO = 1:numCond
 
@@ -103,31 +103,43 @@ for CondBO = 1:numCond
 
         Vec_PrcShftA(CondBO, indx_tao) = tAhat - taoA;
         Vec_PrcShftO(CondBO, indx_tao) = tOhat - taoO;
-        Vec_BsPrcShfts(CondBO, indx_tao) = taoO - taoA;
-        Vec_OpPrcShfts(CondBO, indx_tao) = tOhat - tAhat;
+        Vec_BsPrcShft(CondBO, indx_tao) = taoO - taoA;
+        Vec_OpPrcShft(CondBO, indx_tao) = tOhat - tAhat;
         Vec_taoI(CondBO, indx_tao) = taoO - taoA;
     end
 end
 
 % Plot and store the perceptual shifts
 sortedtaoI = Vec_taoI;
-[sortedtaoI(1, :), sortIndx1] = sort(Vec_taoI(1, :));
-[sortedtaoI(2, :), sortIndx2] = sort(Vec_taoI(2, :));
-[sortedtaoI(3, :), sortIndx3] = sort(Vec_taoI(3, :));
-sortedPrcShftA = soa_sortMatrices(Vec_PrcShftA, sortIndx1, sortIndx2, sortIndx3);
-sortedPrcShftO = soa_sortMatrices(Vec_PrcShftO, sortIndx1, sortIndx2, sortIndx3);
-sortedOpPrcShfts = soa_sortMatrices(Vec_OpPrcShfts, sortIndx1, sortIndx2, sortIndx3);
-sortedBsPrcShfts = soa_sortMatrices(Vec_BsPrcShfts, sortIndx1, sortIndx2, sortIndx3);
+[sortedtaoI(1, :), sortIdx1] = sort(Vec_taoI(1, :));
+[sortedtaoI(2, :), sortIdx2] = sort(Vec_taoI(2, :));
+[sortedtaoI(3, :), sortIdx3] = sort(Vec_taoI(3, :));
+sortedPrcShftA = soa_sortMatrices(Vec_PrcShftA, sortIdx1, sortIdx2, sortIdx3);
+sortedPrcShftO = soa_sortMatrices(Vec_PrcShftO, sortIdx1, sortIdx2, sortIdx3);
+sortedBsPrcShft = soa_sortMatrices(Vec_BsPrcShft, sortIdx1, sortIdx2, sortIdx3);
+sortedOpPrcShft = soa_sortMatrices(Vec_OpPrcShft, sortIdx1, sortIdx2, sortIdx3);
 
+figure('Position', [0, 0, 1200, 1000])
+subplot(2, 2, 1)
 soa_plotErrorBars(ExpR, sortedtaoI, sortedPrcShftA, fontsize, 1, sizeBin);
-fnamePrcShft = sprintf('Exp%d_perTrialPrcShftA.png', ExpR);
-saveas(gcf(), fnamePrcShft);
-soa_plotErrorBars(ExpR, sortedtaoI, sortedPrcShftO, fontsize, 1, sizeBin);
-fnamePrcShft = sprintf('Exp%d_perTrialPrcShftO.png', ExpR);
-saveas(gcf(),fnamePrcShft);
-soa_plotErrorBars(ExpR, sortedtaoI, sortedBsPrcShfts, fontsize, 1, sizeBin);
-fnamePrcShft = sprintf('Exp%d_perTrialBaselinePrcShfts.png', ExpR);
-saveas(gcf(), fnamePrcShft);
-soa_plotErrorBars(ExpR, sortedtaoI, sortedOpPrcShfts, fontsize, 1, sizeBin);
-fnamePrcShft = sprintf('Exp%d_perTrialOperantPrcShfts.png', ExpR);
+title('Percept. shifts, actions')
+xlabel('$\tau_O - \tau_A$ (ms)', 'Interpreter', 'Latex')
+ylabel('Action shift: $\hat{t}_A - \tau_A$ (ms)', 'Interpreter', 'Latex')
+subplot(2, 2, 2)
+lgd = soa_plotErrorBars(ExpR, sortedtaoI, sortedPrcShftO, fontsize, 1, sizeBin);
+set(lgd, 'Location', 'NorthEast')
+title('Percept. shifts, outcomes')
+xlabel('$\tau_O - \tau_A$ (ms)', 'Interpreter', 'Latex')
+ylabel('Outcome shift: $\hat{t}_O - \tau_O$ (ms)', 'Interpreter', 'Latex')
+subplot(2, 2, 3)
+soa_plotErrorBars(ExpR, sortedtaoI, sortedBsPrcShft, fontsize, 1, sizeBin);
+title('Percept. shifts, baseline conditions')
+xlabel('$\tau_O - \tau_A$ (ms)', 'Interpreter', 'Latex')
+ylabel('Baseline $\hat{t}_O - \hat{t}_A$ (ms)', 'Interpreter', 'Latex')
+subplot(2, 2, 4)
+soa_plotErrorBars(ExpR, sortedtaoI, sortedOpPrcShft, fontsize, 1, sizeBin);
+title('Percept. shifts, operant conditions')
+xlabel('$\tau_O - \tau_A$ (ms)', 'Interpreter', 'Latex')
+ylabel('Operant $\hat{t}_O - \hat{t}_A$ (ms)', 'Interpreter', 'Latex')
+fnamePrcShft = sprintf('Exp%d_perTrialPrcShfts.png', ExpR);
 saveas(gcf(), fnamePrcShft);

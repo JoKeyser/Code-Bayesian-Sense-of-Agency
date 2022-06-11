@@ -11,7 +11,7 @@ clc()
 close('all')
 
 % Graph display fonts
-fontsize = 20;
+fontsize = 14;
 sizeBin = 200;
 
 % Simulation settings
@@ -100,6 +100,9 @@ sortedtaoI = Vec_taoI;
 [sortedtaoI(3, :), sortIndx3] = sort(Vec_taoI(3, :));
 
 sortedCCE = soa_sortMatrices(Vec_CCE, sortIndx1, sortIndx2, sortIndx3);
-soa_plotErrorBars(ExpR, sortedtaoI, sortedCCE, fontsize, 1, sizeBin);
+lgd = soa_plotErrorBars(ExpR, sortedtaoI, sortedCCE, fontsize, 1, sizeBin);
+if ExpR == 2, set(lgd, 'Location', 'NorthEast'), end
+xlabel('P(\xi = 1)')
+ylabel('\it CCE')
 fnameCCE = sprintf('Exp%d_perTrialCCE.png', ExpR);
 saveas(gcf(), fnameCCE);

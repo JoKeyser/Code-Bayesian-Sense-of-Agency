@@ -6,10 +6,9 @@
 % Objective: Graph the action and outcome perceptual shifts as functions of
 %            the strength of the causal prior.
 
-function F = ...
+function lgnd = ...
     soa_plotPrcShfts(experiment, arrPrcShftA, arrPrcShftO, arrPXi1, fontsize)
 
-F = figure();
 linewidth = 2;
 
 if experiment == 1
@@ -45,7 +44,7 @@ elseif experiment == 2
         'Action', ' and high uncertainty tone', 'Location', 'northwest');
 end
 
-lgnd.FontSize = 18;
+lgnd.FontSize = fontsize;
 set(lgnd.BoxFace, 'ColorType', 'truecoloralpha', ...
     'ColorData', uint8(255*[1; 1; 1; 0.8]));
 set(gca(),'FontSize', fontsize);

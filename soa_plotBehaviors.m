@@ -1,10 +1,9 @@
 % Function to graph the SoA-related measures
 % Added 09/06/2017
 
-function F = ...
+function lgnd = ...
     soa_plotBehaviors(experiment, arrBehavior, arrPXi1, fontsize, behavior)
 
-F = figure();
 linewidth = 2;
 
 if experiment == 1
@@ -32,12 +31,10 @@ if experiment == 1
     end
 elseif experiment == 2
     hold('on')
-    plot(arrPXi1, arrBehavior(1, :), 'Color', [0, 0, 250]/255, ...
-        'LineStyle', '-', 'Linewidth', linewidth);
-    plot(arrPXi1, arrBehavior(2, :), 'Color', [0, 140, 255]/255, ...
-        'LineStyle', '-', 'Linewidth', linewidth);
-    plot(arrPXi1, arrBehavior(3, :), 'Color', [0, 240, 255]/255, ...
-        'LineStyle', '-', 'Linewidth', linewidth);
+    Colors = {[0, 0, 250]/255, [0, 140, 255]/255, [0, 240, 255]/255};
+    plot(arrPXi1, arrBehavior(1, :), 'Color', Colors{1}, 'Linewidth', linewidth);
+    plot(arrPXi1, arrBehavior(2, :), 'Color', Colors{2}, 'Linewidth', linewidth);
+    plot(arrPXi1, arrBehavior(3, :), 'Color', Colors{3}, 'Linewidth', linewidth);
     hold('off')
 elseif experiment == 3
     hold('on')
@@ -47,6 +44,8 @@ elseif experiment == 3
         'LineStyle', '-', 'Linewidth', linewidth);
     hold('off')
 end
+
+xlabel('P(\xi=1)')
 
 % xlabel('P(\xi=1) of Prior')
 % if behavior == 1
@@ -61,11 +60,11 @@ end
 
 if experiment == 1
     lgnd = legend('Voluntary condition', 'Involuntary condition', ...
-        'Sham condition', 'Location', 'northwest');
+        'Sham condition', 'Location', 'NorthWest');
 elseif experiment == 2
     lgnd = legend('Low uncertainty condition', ...
         'Intermediate uncertainty condition', ...
-        'High uncertainty condition', 'Location', 'northeast');
+        'High uncertainty condition', 'Location', 'NorthWest');
 elseif experiment == 3
     lgnd = legend('Active, Instructed', 'Passive, Instructed', ...
         'Location', 'northeast');

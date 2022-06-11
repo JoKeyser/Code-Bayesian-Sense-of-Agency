@@ -12,7 +12,7 @@ clc()
 close('all')
 
 % Graph display fonts.
-fontsize = 20;
+fontsize = 14;
 sizeBin = 200;
 
 %%% Simulation Settings
@@ -95,5 +95,6 @@ end
 
 % Plot and store CCE as function of causal prior strength.
 soa_plotBehaviors(ExpR, arrCCE, arrPXi1, fontsize, 1);
+ylabel('\it CCE')
 fnameCCEPXi = sprintf('Exp%d_CCEPXi.png', ExpR);
 saveas(gcf(), fnameCCEPXi);

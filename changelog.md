@@ -56,7 +56,8 @@ A few semantic changes aim to increase code clarity and flexibility:
 - Remove code repetitions of semantically unconditional cases.
 - Replace wrapper function `soa_InitMatrix()` with `zeros()` and delete the file.
 - Add references paper equations in comments.
-- Add function `soa_Sigmoid()` as defined in Methods, to match expression in paper.
+- Add function `soa_Sigmoid()` to match expression in Methods.
+- Add same axis labels as in paper and use subplots.
 
 The rest are opinionated, cosmetic changes to subjectively increase readability.
 
