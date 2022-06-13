@@ -79,3 +79,6 @@ for CondBO = 1:numCond
     dlmwrite(fnametaoA, Vec_taoA, 'delimiter', ',');
     dlmwrite(fnametaoO, Vec_taoO, 'delimiter', ',');
 end
+
+% Optionally, visualize the generated samples.
+soa_plotTauSamples(ExpR, numCond)
