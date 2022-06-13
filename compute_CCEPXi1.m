@@ -45,9 +45,6 @@ arrPXi1 = LB:INC:UB;
 size_pXi1 = numel(arrPXi1);
 arrCCE = zeros(numCond, size_pXi1);
 
-% Define Sigmoid function (see Methods).
-Sigmoid = @(x) 1 / (1 + exp(-x));
-
 for CondBO = 1:numCond
 
     % Read from files taoA and taoO values derived from a Gaussian distribution
