@@ -2,7 +2,7 @@
 
 The intent of this repository is to provide executable Matlab code, derived from the Supplementary Source Codes of the publication:
 
-Legaspi, Roberto, & Toyoizumi, Toyoizumi (2019).  
+Legaspi, Roberto, & Toyoizumi, Taro (2019).  
 A Bayesian psychophysics model of sense of agency.  
 _Nature Communications, 10(1), 4250_.  
 <https://doi.org/10.1038/s41467-019-12170-0>
