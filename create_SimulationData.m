@@ -41,7 +41,7 @@ dist_tAtO = 250;
 tOp = tAp + dist_tAtO;
 
 for CondBO = 1:numCond
-    % Initialize baseline parameters with reported empirical data.
+    % Get reported empirical baseline parameters for this experiment condition.
     [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
 
     % Generate samples from Gaussian distributions (first paragraph of Results).

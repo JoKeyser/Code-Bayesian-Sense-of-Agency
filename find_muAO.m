@@ -42,14 +42,14 @@ for muAO = 190:10:250
     sumError = 0;
 
     for CondBO = 1:numCond
-        % Read values of tauA and tauO (derived from a Gaussian distribution),
-        % from the files saved by create_SimulationData.m.
+
+        % Read tauA and tauO from files (sampled from Gaussian distribution).
         fnametauA = sprintf('Exp%dCond%d_Vec_tauA.csv', ExpR, CondBO);
         fnametauO = sprintf('Exp%dCond%d_Vec_tauO.csv', ExpR, CondBO);
         Vec_tauA = dlmread(fnametauA);
         Vec_tauO = dlmread(fnametauO);
 
-        % Get the reported empirical baseline parameters
+        % Get empirical baseline parameters for this experiment condition.
         [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
 
         % Compute for sigma_Tot

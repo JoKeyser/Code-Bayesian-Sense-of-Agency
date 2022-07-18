@@ -54,13 +54,17 @@ arrAOBinding = zeros(numCond,size_pXi1);
 
 for CondBO = 1:numCond
 
-    % Read from files tauA and tauO values derived from a Gaussian distribution
+    % Read from files values tauA and tauO (sampled from Gaussian distribution).
     fnametauA = sprintf('Exp%dCond%d_Vec_tauA.csv', ExpR, CondBO);
     fnametauO = sprintf('Exp%dCond%d_Vec_tauO.csv', ExpR, CondBO);
     Vec_tauA = dlmread(fnametauA);
     Vec_tauO = dlmread(fnametauO);
 
+    % Get reported empirical baseline parameters for this experiment condition.
+    [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
+
     indxPXi1 = size_pXi1 + 1;
+
     for PXi_1 = UB:-INC:LB
         PXi_0 = 1 - PXi_1;
 
@@ -74,9 +78,6 @@ for CondBO = 1:numCond
             % Do for each pair of tauA and tauO
             tauA = Vec_tauA(indx_tau);
             tauO = Vec_tauO(indx_tau);
-
-            % Get the reported empirical baseline parameters
-            [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
 
             % Compute for the posterior-ratio (see Methods)
             Z1 = sqrt(2 * pi) * sigmaAO * T;
