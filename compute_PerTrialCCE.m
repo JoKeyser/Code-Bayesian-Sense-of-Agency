@@ -41,12 +41,28 @@ sigmaAO = 10;
 % Interval length in consideration
 T = 250;  % large enough but finite constant (see Methods)
 
+% Compute helper terms for CCE computation (see Methods).
+Z1 = sqrt(2 * pi) * sigmaAO * T;
+Z0 = T^2;
+
 % Data Matrices
 Vec_CCE = zeros(numCond, tauInstances);
 Vec_tauI = zeros(numCond, tauInstances);
 Vec_Pc = zeros(numCond, tauInstances);
 
 for CondBO = 1:numCond
+
+    % Read from files values tauA and tauO (sampled from Gaussian distribution).
+    fnametauA = sprintf('Exp%dCond%d_Vec_tauA.csv', ExpR, CondBO);
+    fnametauO = sprintf('Exp%dCond%d_Vec_tauO.csv', ExpR, CondBO);
+    Vec_tauA = dlmread(fnametauA);
+    Vec_tauO = dlmread(fnametauO);
+
+    % Get reported empirical baseline parameters for this experiment condition.
+    [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
+
+    % Compute total standard deviation for CCE computation (see Methods).
+    sigmaTot = sqrt(sigmaA^2 + sigmaO^2 + sigmaAO^2);
 
     % Simulated using the fitted P(Xi=1) optimal values
     if ExpR == 1
@@ -67,36 +83,17 @@ for CondBO = 1:numCond
         end
     end
 
+    % Compute CCE (see Methods).
     PXi_0 = 1 - PXi_1;
+    Theta = log((PXi_1 * Z0) / (PXi_0 * Z1));
+    Vec_X = Theta ...
+        - ((Vec_tauO - Vec_tauA - muAO) .^ 2 ./ (2 * sigmaTot^2)) ...
+        + log(sigmaAO / sigmaTot);
+    Vec_CCE(CondBO, :) = ...
+        (sigmaTot / (2 * pi * sigmaA * sigmaO * sigmaAO)) ...
+        .* soa_Sigmoid(Vec_X);
 
-    % Read from files tauA and tauO values derived from a Gaussian distribution
-    fnametauA = sprintf('Exp%dCond%d_Vec_tauA.csv', ExpR, CondBO);
-    fnametauO = sprintf('Exp%dCond%d_Vec_tauO.csv', ExpR, CondBO);
-    Vec_tauA = dlmread(fnametauA);
-    Vec_tauO = dlmread(fnametauO);
-
-    for indx_tau = 1:tauInstances
-
-        % Do for each pair of tauA and tauO.
-        tauA = Vec_tauA(indx_tau);
-        tauO = Vec_tauO(indx_tau);
-
-        % Get the reported empirical baseline parameters.
-        [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
-
-        % Compute CCE (see Methods).
-        Z1 = sqrt(2 * pi) * sigmaAO * T;
-        Z0 = T^2;
-        Theta = log((PXi_1 * Z0) / (PXi_0 * Z1));
-        sigmaTot2 = sigmaA^2 + sigmaO^2 + sigmaAO^2;
-        X = Theta - ((tauO - tauA - muAO)^2 / (2 * sigmaTot2)) ...
-            + log(sigmaAO / sqrt(sigmaTot2));
-        Vec_CCE(CondBO, indx_tau) = ...
-            (sqrt(sigmaTot2) / (2 * pi * sigmaA * sigmaO * sigmaAO)) ...
-            * soa_Sigmoid(X);
-
-        Vec_tauI(CondBO, indx_tau) = tauO - tauA;
-    end
+    Vec_tauI(CondBO, :) = Vec_tauO - Vec_tauA;
 end
 
 % Plot and store trial-to-trial CCE as function of temporal disparity

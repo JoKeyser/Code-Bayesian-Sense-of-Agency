@@ -9,5 +9,5 @@
 % SPDX-License-Identifier: CC0-1.0
 
 function y = soa_Sigmoid(x)
-    y = 1 / (1 + exp(-x));
+    y = 1 ./ (1 + exp(-x));
 end
