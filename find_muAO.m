@@ -12,8 +12,8 @@ clc()
 close('all')
 
 %%% Simulation settings
-% Set number of taoA and taoO instances to be generated.
-taoInstances = 35000;
+% Set number of tauA and tauO instances to be generated.
+tauInstances = 35000;
 
 % Choose experimental set-up.
 %   ExpR = 1: Haggard et al. (2002), numCond = 3; (Vol, Invol, Sham)
@@ -36,12 +36,12 @@ for muAO = 190:10:250
     sumError = 0;
 
     for CondBO = 1:numCond
-        % Read values of taoA and taoO (derived from a Gaussian distribution),
+        % Read values of tauA and tauO (derived from a Gaussian distribution),
         % from the files saved by create_SimulationData.m.
-        fnametaoA = sprintf('Exp%dCond%d_Vec_taoA.csv', ExpR, CondBO);
-        fnametaoO = sprintf('Exp%dCond%d_Vec_taoO.csv', ExpR, CondBO);
-        Vec_taoA = dlmread(fnametaoA);
-        Vec_taoO = dlmread(fnametaoO);
+        fnametauA = sprintf('Exp%dCond%d_Vec_tauA.csv', ExpR, CondBO);
+        fnametauO = sprintf('Exp%dCond%d_Vec_tauO.csv', ExpR, CondBO);
+        Vec_tauA = dlmread(fnametauA);
+        Vec_tauO = dlmread(fnametauO);
 
         % Get the reported empirical baseline parameters
         [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
@@ -50,8 +50,8 @@ for muAO = 190:10:250
         sigmaTot2 = sigmaA^2 + sigmaO^2 + sigmaAO^2;
 
         % Compute the action and outcome perceptual shifts (Eq. 5)
-        Vec_PrcShftA = +(sigmaA^2 / sigmaTot2) * (Vec_taoO - Vec_taoA - muAO);
-        Vec_PrcShftO = -(sigmaO^2 / sigmaTot2) * (Vec_taoO - Vec_taoA - muAO);
+        Vec_PrcShftA = +(sigmaA^2 / sigmaTot2) * (Vec_tauO - Vec_tauA - muAO);
+        Vec_PrcShftO = -(sigmaO^2 / sigmaTot2) * (Vec_tauO - Vec_tauA - muAO);
         uVec_PrcShftA = mean(Vec_PrcShftA);
         uVec_PrcShftO = mean(Vec_PrcShftO);
         sdVec_PrcShftA = std(Vec_PrcShftA);

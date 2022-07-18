@@ -18,7 +18,7 @@ fontsize = 14;
 sizeBin = 200;
 
 % Simulation settings
-taoInstances = 35000;  % Number of taoA and taoO instances to be generated
+tauInstances = 35000;  % Number of tauA and tauO instances to be generated
 
 % Choose experimental set-up.
 %   ExpR = 1: Haggard et al. (2002), numCond = 3; (Vol, Invol, Sham)
@@ -48,26 +48,26 @@ arrAOBinding = zeros(numCond,size_pXi1);
 
 for CondBO = 1:numCond
 
-    % Read from files taoA and taoO values derived from a Gaussian distribution
-    fnametaoA = sprintf('Exp%dCond%d_Vec_taoA.csv', ExpR, CondBO);
-    fnametaoO = sprintf('Exp%dCond%d_Vec_taoO.csv', ExpR, CondBO);
-    Vec_taoA = dlmread(fnametaoA);
-    Vec_taoO = dlmread(fnametaoO);
+    % Read from files tauA and tauO values derived from a Gaussian distribution
+    fnametauA = sprintf('Exp%dCond%d_Vec_tauA.csv', ExpR, CondBO);
+    fnametauO = sprintf('Exp%dCond%d_Vec_tauO.csv', ExpR, CondBO);
+    Vec_tauA = dlmread(fnametauA);
+    Vec_tauO = dlmread(fnametauO);
 
     indxPXi1 = size_pXi1 + 1;
     for PXi_1 = UB:-INC:LB
         PXi_0 = 1 - PXi_1;
 
         % Matrices to track optimal action and outcome estimates
-        Vec_PrcShftA = zeros(1, taoInstances);
-        Vec_PrcShftO = zeros(1, taoInstances);
-        Vec_AOBinding = zeros(1, taoInstances);
+        Vec_PrcShftA = zeros(1, tauInstances);
+        Vec_PrcShftO = zeros(1, tauInstances);
+        Vec_AOBinding = zeros(1, tauInstances);
 
-        for indx_tao = 1:taoInstances
+        for indx_tau = 1:tauInstances
 
-            % Do for each pair of taoA and taoO
-            taoA = Vec_taoA(indx_tao);
-            taoO = Vec_taoO(indx_tao);
+            % Do for each pair of tauA and tauO
+            tauA = Vec_tauA(indx_tau);
+            tauO = Vec_tauO(indx_tau);
 
             % Get the reported empirical baseline parameters
             [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
@@ -77,22 +77,22 @@ for CondBO = 1:numCond
             Z0 = T^2;
             Theta = log((PXi_1 * Z0) / (PXi_0 * Z1));
             sigmaTot2 = sigmaA^2 + sigmaO^2 + sigmaAO^2;
-            r = exp(Theta - ((taoO - taoA - muAO)^2 / (2 * sigmaTot2)));
+            r = exp(Theta - ((tauO - tauA - muAO)^2 / (2 * sigmaTot2)));
 
             % Compute for strength of temporal binding (Eq. 5)
             if r > 1  % causal case
-                tAhat = taoA + (sigmaA^2 / sigmaTot2) * (taoO - taoA - muAO);
-                tOhat = taoO - (sigmaO^2 / sigmaTot2) * (taoO - taoA - muAO);
+                tAhat = tauA + (sigmaA^2 / sigmaTot2) * (tauO - tauA - muAO);
+                tOhat = tauO - (sigmaO^2 / sigmaTot2) * (tauO - tauA - muAO);
                 Xihat = 1;
             else  % acausal case
-                tAhat = taoA;
-                tOhat = taoO;
+                tAhat = tauA;
+                tOhat = tauO;
                 Xihat = 0;
             end
             
-            Vec_PrcShftA(1, indx_tao) = tAhat - taoA;
-            Vec_PrcShftO(1, indx_tao) = tOhat - taoO;
-            Vec_AOBinding(1, indx_tao) = 250 + (tOhat - taoO) - (tAhat - taoA);
+            Vec_PrcShftA(1, indx_tau) = tAhat - tauA;
+            Vec_PrcShftO(1, indx_tau) = tOhat - tauO;
+            Vec_AOBinding(1, indx_tau) = 250 + (tOhat - tauO) - (tAhat - tauA);
         end
 
         uPrcShftA = mean(Vec_PrcShftA(:));

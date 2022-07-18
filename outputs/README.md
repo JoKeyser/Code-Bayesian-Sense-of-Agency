@@ -41,33 +41,33 @@ Further below are the outputs with setting `ExpR = 2`.
 The script generates 6 files that you can compare with your own run:
 
 ```
-Exp1Cond1_Vec_taoA.csv
-Exp1Cond1_Vec_taoO.csv
-Exp1Cond2_Vec_taoA.csv
-Exp1Cond2_Vec_taoO.csv
-Exp1Cond3_Vec_taoA.csv
-Exp1Cond3_Vec_taoO.csv
+Exp1Cond1_Vec_tauA.csv
+Exp1Cond1_Vec_tauO.csv
+Exp1Cond2_Vec_tauA.csv
+Exp1Cond2_Vec_tauO.csv
+Exp1Cond3_Vec_tauA.csv
+Exp1Cond3_Vec_tauO.csv
 ```
 
 The Matlab console output was:
 
 ```
-============= tao DataSet Exp 1 Cond 1 ===============
-taoA [-253.70, 257.35] taoO [-10.93, 585.29]
-tao statistics: 6.11 (66.17)	 265.21 (72.04)
-taoA elements: 35000 taoO elements: 35000
+============= tau DataSet Exp 1 Cond 1 ===============
+tauA [-253.70, 257.35] tauO [-10.93, 585.29]
+tau statistics: 6.11 (66.17)	 265.21 (72.04)
+tauA elements: 35000 tauO elements: 35000
 ==============================================
 
-============= tao DataSet Exp 1 Cond 2 ===============
-taoA [-266.38, 467.69] taoO [-38.08, 559.54]
-tao statistics: 82.68 (83.52)	 265.42 (72.30)
-taoA elements: 35000 taoO elements: 35000
+============= tau DataSet Exp 1 Cond 2 ===============
+tauA [-266.38, 467.69] tauO [-38.08, 559.54]
+tau statistics: 82.68 (83.52)	 265.42 (72.30)
+tauA elements: 35000 tauO elements: 35000
 ==============================================
 
-============= tao DataSet Exp 1 Cond 3 ===============
-taoA [-356.94, 383.36] taoO [-23.22, 537.68]
-tao statistics: 32.86 (78.38)	 264.61 (71.84)
-taoA elements: 35000 taoO elements: 35000
+============= tau DataSet Exp 1 Cond 3 ===============
+tauA [-356.94, 383.36] tauO [-23.22, 537.68]
+tau statistics: 32.86 (78.38)	 264.61 (71.84)
+tauA elements: 35000 tauO elements: 35000
 ==============================================
 ```
 
@@ -394,33 +394,33 @@ rng(1,'twister');
 The script generates 6 files that you can compare with your own run:
 
 ```
-Exp2Cond1_Vec_taoA.csv
-Exp2Cond1_Vec_taoO.csv
-Exp2Cond2_Vec_taoA.csv
-Exp2Cond2_Vec_taoO.csv
-Exp2Cond3_Vec_taoA.csv
-Exp2Cond3_Vec_taoO.csv
+Exp2Cond1_Vec_tauA.csv
+Exp2Cond1_Vec_tauO.csv
+Exp2Cond2_Vec_tauA.csv
+Exp2Cond2_Vec_tauO.csv
+Exp2Cond3_Vec_tauA.csv
+Exp2Cond3_Vec_tauO.csv
 ```
 
 The Matlab console output was:
 
 ```
-============= tao DataSet Exp 2 Cond 1 ===============
-taoA [-303.11, 277.62] taoO [51.22, 556.36]
-tao statistics: -7.88 (75.19)	 285.18 (61.03)
-taoA elements: 35000 taoO elements: 35000
+============= tau DataSet Exp 2 Cond 1 ===============
+tauA [-303.11, 277.62] tauO [51.22, 556.36]
+tau statistics: -7.88 (75.19)	 285.18 (61.03)
+tauA elements: 35000 tauO elements: 35000
 ==============================================
 
-============= tao DataSet Exp 2 Cond 2 ===============
-taoA [-323.70, 339.61] taoO [18.18, 566.00]
-tao statistics: -8.29 (75.47)	 296.38 (66.28)
-taoA elements: 35000 taoO elements: 35000
+============= tau DataSet Exp 2 Cond 2 ===============
+tauA [-323.70, 339.61] tauO [18.18, 566.00]
+tau statistics: -8.29 (75.47)	 296.38 (66.28)
+tauA elements: 35000 tauO elements: 35000
 ==============================================
 
-============= tao DataSet Exp 2 Cond 3 ===============
-taoA [-381.98, 329.84] taoO [-15.28, 685.85]
-tao statistics: -7.17 (75.37)	 344.51 (89.80)
-taoA elements: 35000 taoO elements: 35000
+============= tau DataSet Exp 2 Cond 3 ===============
+tauA [-381.98, 329.84] tauO [-15.28, 685.85]
+tau statistics: -7.17 (75.37)	 344.51 (89.80)
+tauA elements: 35000 tauO elements: 35000
 ==============================================
 ```
 

@@ -1,18 +1,18 @@
 *.m~
 *.swp
 # generated output data from create_SimulationData.m:
-/Exp1Cond1_Vec_taoA.csv
-/Exp1Cond1_Vec_taoO.csv
-/Exp1Cond2_Vec_taoA.csv
-/Exp1Cond2_Vec_taoO.csv
-/Exp1Cond3_Vec_taoA.csv
-/Exp1Cond3_Vec_taoO.csv
-/Exp2Cond1_Vec_taoA.csv
-/Exp2Cond1_Vec_taoO.csv
-/Exp2Cond2_Vec_taoA.csv
-/Exp2Cond2_Vec_taoO.csv
-/Exp2Cond3_Vec_taoA.csv
-/Exp2Cond3_Vec_taoO.csv
+/Exp1Cond1_Vec_tauA.csv
+/Exp1Cond1_Vec_tauO.csv
+/Exp1Cond2_Vec_tauA.csv
+/Exp1Cond2_Vec_tauO.csv
+/Exp1Cond3_Vec_tauA.csv
+/Exp1Cond3_Vec_tauO.csv
+/Exp2Cond1_Vec_tauA.csv
+/Exp2Cond1_Vec_tauO.csv
+/Exp2Cond2_Vec_tauA.csv
+/Exp2Cond2_Vec_tauO.csv
+/Exp2Cond3_Vec_tauA.csv
+/Exp2Cond3_Vec_tauO.csv
 # generated data and figures from compute_PXisPrcShfts.m:
 /Exp1_PXisPrcShfts.png
 /Exp1_arrPrcShftA.csv

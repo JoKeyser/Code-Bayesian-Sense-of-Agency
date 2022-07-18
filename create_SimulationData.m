@@ -3,7 +3,7 @@
 %   Lab for Neural Computation and Adaptation
 %   RIKEN Center for Brain Science
 %
-% Objective: Create the noisy sensory input signals arriving at various times taoA and taoO
+% Objective: Create the noisy sensory input signals arriving at various times tauA and tauO
 
 % Clear all variables from workspace, clear command window, close all figures.
 clearvars()
@@ -19,8 +19,8 @@ close('all')
 Flag_Use_Statistics_Toolbox = false;
 
 %%% Simulation settings
-% Set number of taoA and taoO instances to be generated.
-taoInstances = 35000;
+% Set number of tauA and tauO instances to be generated.
+tauInstances = 35000;
 
 % Choose experimental set-up.
 %   ExpR = 1: Haggard et al. (2002), numCond = 3; (Vol, Invol, Sham)
@@ -40,44 +40,44 @@ for CondBO = 1:numCond
     % Generate samples from Gaussian distributions (first paragraph of Results).
     if Flag_Use_Statistics_Toolbox  % flag is set above
         % NOTE: Requires the Statistics and Machine Learning Toolbox.
-        Vec_taoA = normrnd(tAp + muA, sigmaA, [1, taoInstances]);
-        Vec_taoO = normrnd(tOp + muO, sigmaO, [1, taoInstances]);
+        Vec_tauA = normrnd(tAp + muA, sigmaA, [1, tauInstances]);
+        Vec_tauO = normrnd(tOp + muO, sigmaO, [1, tauInstances]);
         % Optionally, check the generated samples.
-%         figure(); normplot(Vec_taoA);
-%         figure(); normplot(Vec_taoO);
-%         figure(); histfit(Vec_taoA);
-%         figure(); histfit(Vec_taoO);
+%         figure(); normplot(Vec_tauA);
+%         figure(); normplot(Vec_tauO);
+%         figure(); histfit(Vec_tauA);
+%         figure(); histfit(Vec_tauO);
     else
-        Vec_taoA = (tAp + muA) + sigmaA .* randn(1, taoInstances);
-        Vec_taoO = (tOp + muO) + sigmaO .* randn(1, taoInstances);
+        Vec_tauA = (tAp + muA) + sigmaA .* randn(1, tauInstances);
+        Vec_tauO = (tOp + muO) + sigmaO .* randn(1, tauInstances);
     end
 
     % Generate sample statistics.
-    sizeVec_taoA = numel(Vec_taoA);
-    sizeVec_taoO = numel(Vec_taoO);
-    taoA_min = min(Vec_taoA);
-    taoA_max = max(Vec_taoA);
-    taoO_min = min(Vec_taoO);
-    taoO_max = max(Vec_taoO);
-    uVectaoA = mean(Vec_taoA);
-    uVectaoO = mean(Vec_taoO);
-    stdVectaoA = std(Vec_taoA);
-    stdVectaoO = std(Vec_taoO);
+    sizeVec_tauA = numel(Vec_tauA);
+    sizeVec_tauO = numel(Vec_tauO);
+    tauA_min = min(Vec_tauA);
+    tauA_max = max(Vec_tauA);
+    tauO_min = min(Vec_tauO);
+    tauO_max = max(Vec_tauO);
+    uVectauA = mean(Vec_tauA);
+    uVectauO = mean(Vec_tauO);
+    stdVectauA = std(Vec_tauA);
+    stdVectauO = std(Vec_tauO);
 
     % Print sample statistics and store generated simulation data.
-    fprintf('\n============= tao DataSet Exp %d Cond %d ===============\n', ...
+    fprintf('\n============= tau DataSet Exp %d Cond %d ===============\n', ...
         ExpR, CondBO);
-    fprintf('taoA [%0.2f, %0.2f] taoO [%0.2f, %0.2f]\n', ...
-        taoA_min, taoA_max, taoO_min, taoO_max);
-    fprintf('tao statistics: %0.2f (%0.2f)\t %0.2f (%0.2f)\n', ...
-        uVectaoA, stdVectaoA, uVectaoO, stdVectaoO);
-    fprintf('taoA elements: %d taoO elements: %d\n', ...
-        sizeVec_taoA, sizeVec_taoO);
+    fprintf('tauA [%0.2f, %0.2f] tauO [%0.2f, %0.2f]\n', ...
+        tauA_min, tauA_max, tauO_min, tauO_max);
+    fprintf('tau statistics: %0.2f (%0.2f)\t %0.2f (%0.2f)\n', ...
+        uVectauA, stdVectauA, uVectauO, stdVectauO);
+    fprintf('tauA elements: %d tauO elements: %d\n', ...
+        sizeVec_tauA, sizeVec_tauO);
     fprintf('==============================================\n');
-    fnametaoA = sprintf('Exp%dCond%d_Vec_taoA.csv', ExpR, CondBO);
-    fnametaoO = sprintf('Exp%dCond%d_Vec_taoO.csv', ExpR, CondBO);
-    dlmwrite(fnametaoA, Vec_taoA, 'delimiter', ',');
-    dlmwrite(fnametaoO, Vec_taoO, 'delimiter', ',');
+    fnametauA = sprintf('Exp%dCond%d_Vec_tauA.csv', ExpR, CondBO);
+    fnametauO = sprintf('Exp%dCond%d_Vec_tauO.csv', ExpR, CondBO);
+    dlmwrite(fnametauA, Vec_tauA, 'delimiter', ',');
+    dlmwrite(fnametauO, Vec_tauO, 'delimiter', ',');
 end
 
 % Optionally, visualize the generated samples.

@@ -59,6 +59,7 @@ A few semantic changes aim to increase code clarity and flexibility:
 - Add function `soa_Sigmoid()` to match expression in Methods.
 - Add axis labels as in paper and use subplots.
 - Add functions `soa_plotTauSamples()` and `sameaxes()` to plot samples.
+- Replace `tao` with `tau` if referring to the Greek letter, to avoid confusion with A/O for action/outcome.
 
 The rest are opinionated, cosmetic changes to subjectively increase readability.
 

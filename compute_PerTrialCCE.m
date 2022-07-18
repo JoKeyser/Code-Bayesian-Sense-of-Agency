@@ -15,7 +15,7 @@ fontsize = 14;
 sizeBin = 200;
 
 % Simulation settings
-taoInstances = 35000;  % Number of taoA and taoO instances (loaded from file)
+tauInstances = 35000;  % Number of tauA and tauO instances (loaded from file)
 
 % Choose experimental set-up.
 %   ExpR = 1: Haggard et al. (2002), numCond = 3; (Vol, Invol, Sham)
@@ -36,9 +36,9 @@ sigmaAO = 10;
 T = 250;  % large enough but finite constant (see Methods)
 
 % Data Matrices
-Vec_CCE = zeros(numCond, taoInstances);
-Vec_taoI = zeros(numCond, taoInstances);
-Vec_Pc = zeros(numCond, taoInstances);
+Vec_CCE = zeros(numCond, tauInstances);
+Vec_tauI = zeros(numCond, tauInstances);
+Vec_Pc = zeros(numCond, tauInstances);
 
 for CondBO = 1:numCond
 
@@ -63,17 +63,17 @@ for CondBO = 1:numCond
 
     PXi_0 = 1 - PXi_1;
 
-    % Read from files taoA and taoO values derived from a Gaussian distribution
-    fnametaoA = sprintf('Exp%dCond%d_Vec_taoA.csv', ExpR, CondBO);
-    fnametaoO = sprintf('Exp%dCond%d_Vec_taoO.csv', ExpR, CondBO);
-    Vec_taoA = dlmread(fnametaoA);
-    Vec_taoO = dlmread(fnametaoO);
+    % Read from files tauA and tauO values derived from a Gaussian distribution
+    fnametauA = sprintf('Exp%dCond%d_Vec_tauA.csv', ExpR, CondBO);
+    fnametauO = sprintf('Exp%dCond%d_Vec_tauO.csv', ExpR, CondBO);
+    Vec_tauA = dlmread(fnametauA);
+    Vec_tauO = dlmread(fnametauO);
 
-    for indx_tao = 1:taoInstances
+    for indx_tau = 1:tauInstances
 
-        % Do for each pair of taoA and taoO.
-        taoA = Vec_taoA(indx_tao);
-        taoO = Vec_taoO(indx_tao);
+        % Do for each pair of tauA and tauO.
+        tauA = Vec_tauA(indx_tau);
+        tauO = Vec_tauO(indx_tau);
 
         % Get the reported empirical baseline parameters.
         [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
@@ -83,24 +83,24 @@ for CondBO = 1:numCond
         Z0 = T^2;
         Theta = log((PXi_1 * Z0) / (PXi_0 * Z1));
         sigmaTot2 = sigmaA^2 + sigmaO^2 + sigmaAO^2;
-        X = Theta - ((taoO - taoA - muAO)^2 / (2 * sigmaTot2)) ...
+        X = Theta - ((tauO - tauA - muAO)^2 / (2 * sigmaTot2)) ...
             + log(sigmaAO / sqrt(sigmaTot2));
-        Vec_CCE(CondBO, indx_tao) = ...
+        Vec_CCE(CondBO, indx_tau) = ...
             (sqrt(sigmaTot2) / (2 * pi * sigmaA * sigmaO * sigmaAO)) ...
             * soa_Sigmoid(X);
 
-        Vec_taoI(CondBO, indx_tao)  = taoO - taoA;
+        Vec_tauI(CondBO, indx_tau) = tauO - tauA;
     end
 end
 
 % Plot and store trial-to-trial CCE as function of temporal disparity
-sortedtaoI = Vec_taoI;
-[sortedtaoI(1, :), sortIndx1] = sort(Vec_taoI(1, :));
-[sortedtaoI(2, :), sortIndx2] = sort(Vec_taoI(2, :));
-[sortedtaoI(3, :), sortIndx3] = sort(Vec_taoI(3, :));
+sortedtauI = Vec_tauI;
+[sortedtauI(1, :), sortIndx1] = sort(Vec_tauI(1, :));
+[sortedtauI(2, :), sortIndx2] = sort(Vec_tauI(2, :));
+[sortedtauI(3, :), sortIndx3] = sort(Vec_tauI(3, :));
 
 sortedCCE = soa_sortMatrices(Vec_CCE, sortIndx1, sortIndx2, sortIndx3);
-lgd = soa_plotErrorBars(ExpR, sortedtaoI, sortedCCE, fontsize, 1, sizeBin);
+lgd = soa_plotErrorBars(ExpR, sortedtauI, sortedCCE, fontsize, 1, sizeBin);
 if ExpR == 2, set(lgd, 'Location', 'NorthEast'), end
 xlabel('P(\xi = 1)')
 ylabel('\it CCE')
