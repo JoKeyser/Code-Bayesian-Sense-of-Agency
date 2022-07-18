@@ -64,6 +64,7 @@ A few semantic changes aim to increase code clarity and flexibility:
 - Add functions `soa_plotTauSamples()` and `sameaxes()` to plot samples.
 - Change and add headers to clarify licensing (make REUSE compliant).
 - CCE computation: Drop a for-loop and refactor computation of terms.
+- Add function `soa_IBoptimalPXi1.m` to avoid code duplication.
 
 The rest are opinionated, cosmetic changes to subjectively increase readability.
 

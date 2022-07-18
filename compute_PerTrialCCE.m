@@ -64,27 +64,11 @@ for CondBO = 1:numCond
     % Compute total standard deviation for CCE computation (see Methods).
     sigmaTot = sqrt(sigmaA^2 + sigmaO^2 + sigmaAO^2);
 
-    % Simulated using the fitted P(Xi=1) optimal values
-    if ExpR == 1
-        if CondBO == 1
-            PXi_1 = 0.9;
-        elseif CondBO == 2
-            PXi_1 = 0.9;
-        else
-            PXi_1 = 0.1;
-        end
-    elseif ExpR == 2
-        if CondBO == 1
-            PXi_1 = 0.9;
-        elseif CondBO == 2
-            PXi_1 = 0.6;
-        else
-            PXi_1 = 0.5;
-        end
-    end
+    % Simulate with the previously fitted optimal values of P(Xi=1).
+    PXi_1 = soa_IBoptimalPXi1(ExpR, CondBO);
+    PXi_0 = 1 - PXi_1;
 
     % Compute CCE (see Methods).
-    PXi_0 = 1 - PXi_1;
     Theta = log((PXi_1 * Z0) / (PXi_0 * Z1));
     Vec_X = Theta ...
         - ((Vec_tauO - Vec_tauA - muAO) .^ 2 ./ (2 * sigmaTot^2)) ...

@@ -62,25 +62,8 @@ for CondBO = 1:numCond
     % Get reported empirical baseline parameters for this experiment condition.
     [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
 
-    % Simulated using the fitted P(Xi=1) optimal values
-    if ExpR == 1
-        if CondBO == 1
-            PXi_1 = 0.9;
-        elseif CondBO == 2
-            PXi_1 = 0.9;
-        else
-            PXi_1 = 0.1;
-        end
-    elseif ExpR==2
-        if CondBO == 1
-            PXi_1 = 0.9;
-        elseif CondBO == 2
-            PXi_1 = 0.6;
-        else
-            PXi_1 = 0.5;
-        end
-    end
-
+    % Simulate with the previously fitted optimal values of P(Xi=1).
+    PXi_1 = soa_IBoptimalPXi1(ExpR, CondBO);
     PXi_0 = 1 - PXi_1;
 
     for indx_tau = 1:tauInstances
