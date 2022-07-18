@@ -1,3 +1,7 @@
+% SPDX-FileCopyrightText: 2022 Roberto Legaspi and Taro Toyoizumi
+%
+% SPDX-License-Identifier: CC-BY-4.0
+
 8/15/19 9:56 AM                              /Users/roberto/Documents/MATLAB/create_SimulationData.m                                          1 of 1
 % Published: August 14, 2019
 % Copyright

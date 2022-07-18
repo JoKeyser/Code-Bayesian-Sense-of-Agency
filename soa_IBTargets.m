@@ -1,10 +1,16 @@
-% Published: August 14, 2019
-% Copyright
-%   Lab for Neural Computation and Adaptation
-%   RIKEN Center for Brain Science
-%
 % Objective: Return the reported action and outcome perceptual shifts
 %            for the operant conditions.
+%
+% Published: August 14, 2019
+% Copyright: Roberto Legaspi and Taro Toyoizumi
+%            Lab for Neural Computation and Adaptation
+%            RIKEN Center for Brain Science
+% License: CC-BY-4.0
+% Changes by: Johannes Keyser, please refer to changelog.md
+%
+% SPDX-FileCopyrightText: 2019 Roberto Legaspi and Taro Toyoizumi
+%
+% SPDX-License-Identifier: CC-BY-4.0
 
 function [trgtPrcShftA, trgtPrcShftO] = soa_IBTargets(experiment, condition)
 

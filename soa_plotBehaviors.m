@@ -1,5 +1,15 @@
-% Function to graph the SoA-related measures
-% Added 09/06/2017
+% Objective: Function to plot the SoA-related measures.
+% Added: 09/06/2017
+%
+% Copyright: Roberto Legaspi and Taro Toyoizumi
+%            Lab for Neural Computation and Adaptation
+%            RIKEN Center for Brain Science
+% License: CC-BY-4.0
+% Changes by: Johannes Keyser, please refer to changelog.md
+%
+% SPDX-FileCopyrightText: 2019 Roberto Legaspi and Taro Toyoizumi
+%
+% SPDX-License-Identifier: CC-BY-4.0
 
 function lgnd = ...
     soa_plotBehaviors(experiment, arrBehavior, arrPXi1, fontsize, behavior)

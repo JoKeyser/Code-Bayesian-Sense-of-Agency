@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2022 Johannes Keyser
+
+SPDX-License-Identifier: CC0-1.0
+-->
+
 # Changelog
 
 ## Purpose
@@ -16,14 +22,11 @@ The paper and the unchanged supplementary PDF file is available in folder [publi
 
 The overarching intent of this repository is to provide executable code from the printed supplementary.
 
-For an exhaustive set of all changes, you can inspect the Git log or compare Git commits.
+For an exhaustive set of changes, you can inspect the Git log and compare Git commits.
 
-## License
+## Licenses
 
-To the extent possible under the law, all changes are placed in the public domain under the CC0 license.
-Please refer to <https://creativecommons.org/share-your-work/public-domain/cc0/> for the legal text.
-
-Any and all credit should go to the original authors, see their license terms in [README.md](README.md) and [license.txt](license.txt).
+Please refer to folder [LICENSES](LICENSES).
 
 ## Summary of changes
 
@@ -59,7 +62,7 @@ A few semantic changes aim to increase code clarity and flexibility:
 - Add function `soa_Sigmoid()` to match expression in Methods.
 - Add axis labels as in paper and use subplots.
 - Add functions `soa_plotTauSamples()` and `sameaxes()` to plot samples.
-- Replace `tao` with `tau` if referring to the Greek letter, to avoid confusion with A/O for action/outcome.
+- Change and add headers to clarify licensing (make REUSE compliant).
 
 The rest are opinionated, cosmetic changes to subjectively increase readability.
 
@@ -71,3 +74,4 @@ The rest are opinionated, cosmetic changes to subjectively increase readability.
 - Fix typos in comments.
 - Appease Matlab's linter.
 - Replace multi-line comments with single-line comments.
+- Replace `tao` with `tau` if referring to the Greek letter, to avoid confusion with A/O for action/outcome. 

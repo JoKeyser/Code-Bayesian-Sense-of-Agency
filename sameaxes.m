@@ -42,8 +42,12 @@ function sameaxes(XYZC, HNDS)
 %
 % LICENSE
 %   This script is dedicated to the public domain under the
-%   CC0 Public Domain Dedication. For details, please visit
+%   CC0-1.0 Public Domain Dedication. For details, please visit
 %   https://creativecommons.org/share-your-work/public-domain/cc0/
+%
+% SPDX-FileCopyrightText: 2022 Johannes Keyser
+%
+% SPDX-License-Identifier: CC0-1.0
 
 validXYZC = 'xyzc'; % x-, y-, z- and/or color-axes (in any combination)
 if nargin < 1 || isempty(XYZC), XYZC = validXYZC; end

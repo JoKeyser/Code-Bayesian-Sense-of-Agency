@@ -16,8 +16,13 @@
 #
 # LICENSE
 #   This script is dedicated to the public domain under the
-#   CC0 Public Domain Dedication. For details, please visit
+#   CC0-1.0 Public Domain Dedication. For details, please visit
 #   https://creativecommons.org/share-your-work/public-domain/cc0/
+#
+# SPDX-FileCopyrightText: 2022 Johannes Keyser
+#
+# SPDX-License-Identifier: CC0-1.0
+
 
 
 STARTPAGE=2  # set to page number of first page of source pdf

@@ -1,0 +1,12 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: A Bayesian psychophysics model of sense of agency.
+Upstream-Contact: Roberto Legaspi and Taro Toyoizumi
+Source: https://doi.org/10.1038/s41467-019-12170-0
+
+Files: publication/*
+Copyright: 2019 Roberto Legaspi and Taro Toyoizumi
+License: CC-BY-4.0
+
+Files: outputs/*
+Copyright: 2022 Johannes Keyser <johannes.keyser@sport.uni-giessen.de>
+License: CC0-1.0

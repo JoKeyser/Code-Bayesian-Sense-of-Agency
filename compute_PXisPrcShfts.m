@@ -1,12 +1,18 @@
-% Published: August 14, 2019
-% Copyright
-%   Lab for Neural Computation and Adaptation
-%   RIKEN Center for Brain Science
-%
 % Objective: Fit Haggard et al's data to find the optimal value for the free
 %            parameter P(Xi=1), muAO is 230 ms and sigmaAO is 10 ms.
 %            Plot the action and outcome perceptual shifts given P(Xi=1)
-%            in the range [0.0, 1.0] with 0.1 increments (see figure 2).
+%            in the range [0.0, 1.0] with increments of 0.1 (see figure 2).
+%
+% Published: August 14, 2019
+% Copyright: Roberto Legaspi and Taro Toyoizumi
+%            Lab for Neural Computation and Adaptation
+%            RIKEN Center for Brain Science
+% License: CC-BY-4.0
+% Changes by: Johannes Keyser, please refer to changelog.md
+%
+% SPDX-FileCopyrightText: 2019 Roberto Legaspi and Taro Toyoizumi
+%
+% SPDX-License-Identifier: CC-BY-4.0
 
 % Clear all variables from workspace, clear command window, close all figures.
 clearvars()

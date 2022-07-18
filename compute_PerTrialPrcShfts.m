@@ -1,11 +1,17 @@
-% Published: August 14, 2019
-% Copyright
-%   Lab for Neural Computation and Adaptation
-%   RIKEN Center for Brain Science
-%
 % Objective: Compute the trial-to-trial temporal binding and repulsion effects,
-%               as well as the baseline and operant temporal bindings,
-%               as functions of temporal disparity, i.e., tauO-tauA.
+%            as well as the baseline and operant temporal bindings,
+%            as functions of temporal disparity, i.e., tauO - tauA.
+%
+% Published: August 14, 2019
+% Copyright: Roberto Legaspi and Taro Toyoizumi
+%            Lab for Neural Computation and Adaptation
+%            RIKEN Center for Brain Science
+% License: CC-BY-4.0
+% Changes by: Johannes Keyser, please refer to changelog.md
+%
+% SPDX-FileCopyrightText: 2019 Roberto Legaspi and Taro Toyoizumi
+%
+% SPDX-License-Identifier: CC-BY-4.0
 
 % Clear all variables from workspace, clear command window, close all figures.
 clearvars()

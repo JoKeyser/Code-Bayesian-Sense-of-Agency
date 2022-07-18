@@ -1,10 +1,15 @@
-% Published: August 14, 2019
-% Copyright
-%   Lab for Neural Computation and Adaptation
-%   RIKEN Center for Brain Science
-%
 % Objective: Plot the optimal baheviors used in the figures of the paper with
 %            ERROR BARS displayed (figures 3 b-e and 5 c-d).
+%
+% Copyright: Roberto Legaspi and Taro Toyoizumi
+%            Lab for Neural Computation and Adaptation
+%            RIKEN Center for Brain Science
+% License: CC-BY-4.0
+% Changes by: Johannes Keyser, please refer to changelog.md
+%
+% SPDX-FileCopyrightText: 2019 Roberto Legaspi and Taro Toyoizumi
+%
+% SPDX-License-Identifier: CC-BY-4.0
 
 function lgnd = ...
     soa_plotErrorBars(experiment, arrAxes, arrBehavior, fontsize, flag, sizeBin)

@@ -1,10 +1,16 @@
-% Published: August 14, 2019
-% Copyright
-%   Lab for Neural Computation and Adaptation
-%   RIKEN Center for Brain Science
-%
 % Objective: Return the means and standard deviations of the reported
 %            baseline action and outcome timing judgment errors.
+%
+% Published: August 14, 2019
+% Copyright: Roberto Legaspi and Taro Toyoizumi
+%            Lab for Neural Computation and Adaptation
+%            RIKEN Center for Brain Science
+% License: CC-BY-4.0
+% Changes by: Johannes Keyser, please refer to changelog.md
+%
+% SPDX-FileCopyrightText: 2019 Roberto Legaspi and Taro Toyoizumi
+%
+% SPDX-License-Identifier: CC-BY-4.0
 
 function [mu_A, sigma_A, mu_O, sigma_O] = ...
     soa_IBexperiment(experiment_case, condition)

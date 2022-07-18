@@ -1,8 +1,12 @@
+% Objective: Plot histograms of samples tauA, tauO, and their differences.
+%
 % Copyright: Johannes Keyser <johannes.keyser@sport.uni-giessen.de>
-% License: CC0 public domain dedication, see
+% License: CC0-1.0 public domain dedication, see
 %          <https://creativecommons.org/share-your-work/public-domain/cc0/>.
 %
-% Objective: Plot histograms of samples tauA, tauO, and their differences.
+% SPDX-FileCopyrightText: 2022 Johannes Keyser
+%
+% SPDX-License-Identifier: CC0-1.0
 
 function soa_plotTauSamples(ExpR, numCond)
 
