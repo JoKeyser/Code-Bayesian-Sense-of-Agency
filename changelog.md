@@ -78,4 +78,6 @@ The rest are opinionated, cosmetic changes to subjectively increase readability.
 - Fix typos in comments.
 - Appease Matlab's linter.
 - Replace multi-line comments with single-line comments.
-- Replace `tao` with `tau` if referring to the Greek letter, to avoid confusion with A/O for action/outcome. 
+- Replace `tao` with `tau` if referring to the Greek letter, to avoid confusion with A/O for action/outcome.
+- Add comments to `find_muAO.m` and make output more readable.
+

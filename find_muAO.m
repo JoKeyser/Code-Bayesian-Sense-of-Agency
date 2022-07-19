@@ -18,8 +18,6 @@ clc()
 close('all')
 
 %%% Simulation settings
-% Set number of tauA and tauO instances to be generated.
-tauInstances = 35000;
 
 % Choose experimental set-up.
 %   ExpR = 1: Haggard et al. (2002), numCond = 3; (Vol, Invol, Sham)
@@ -35,10 +33,15 @@ tOp = tAp + dist_tAtO;
 % To obtain discernible perceptual shifts, sigmaAO should be small:
 sigmaAO = 10;
 
-for muAO = 190:10:250
+% Initialize minimal model error, to find optimal fitting muAO.
+min_modelEE = Inf;
 
-    fprintf(['Action + outcome perceptual shifts per condition ', ...
-        'given muAO = %d\n'], muAO);
+% Perform a grid search for optimal muAO.
+muAO_grid = 190:10:250;
+
+for muAO = muAO_grid
+
+    fprintf('Action + outcome perceptual shifts given muAO = %d ms:\n', muAO);
     sumError = 0;
 
     for CondBO = 1:numCond
@@ -50,9 +53,9 @@ for muAO = 190:10:250
         Vec_tauO = dlmread(fnametauO);
 
         % Get empirical baseline parameters for this experiment condition.
-        [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
+        [~, sigmaA, ~, sigmaO] = soa_IBexperiment(ExpR, CondBO);
 
-        % Compute for sigma_Tot
+        % Compute total variance.
         sigmaTot2 = sigmaA^2 + sigmaO^2 + sigmaAO^2;
 
         % Compute the action and outcome perceptual shifts (Eq. 5)
@@ -62,38 +65,43 @@ for muAO = 190:10:250
         uVec_PrcShftO = mean(Vec_PrcShftO);
         sdVec_PrcShftA = std(Vec_PrcShftA);
         sdVec_PrcShftO = std(Vec_PrcShftO);
+        % Round to full milliseconds.
         ruVec_PrcShftA = round(uVec_PrcShftA);
         ruVec_PrcShftO = round(uVec_PrcShftO);
         rsdVec_PrcShftA = round(sdVec_PrcShftA);
         rsdVec_PrcShftO = round(sdVec_PrcShftO);
 
-        % Compute for model estimation errors given the reported empirical results
+        % Compute model estimation errors given the reported empirical results.
         [targPrcShftA, targPrcShftO] = soa_IBTargets(ExpR, CondBO);
+        % Action error: Compute error for action shifts.
         errPrcShft = abs(ruVec_PrcShftA - targPrcShftA);
-            
+
+        % Outcome error: Optionally add error for outcome shifts.
         % NOTE: Even when we consider the average of action and outcome
-        %       estimation errors, the optimal result is the same.
-%         errPrcShft = (abs(ruVec_PrcShftA - targPrcShftA) ...
-%             + abs(ruVec_PrcShftO - targPrcShftO)) / 2;
-            
+        %       estimation errors, the optimal result is the same for ExpR = 1.
+%         errPrcShft = (errPrcShft + abs(ruVec_PrcShftO - targPrcShftO)) / 2;
+
         sumError = sumError + errPrcShft;
 
-        fprintf('Condition %d:\t %0.1f(%0.2f)\t %0.1f(%0.2f)\n', CondBO, ...
+        fprintf('\tCondition %d:\t%+3d (%2d) ms,\t%+3d (%2d) ms\n', CondBO, ...
             ruVec_PrcShftA, rsdVec_PrcShftA, ruVec_PrcShftO, rsdVec_PrcShftO);
     end
 
+    % Average model error over conditions.
     modelEE = sumError / numCond;
-    fprintf('model estimation error:\t%0.2f:\n\n', modelEE);
-    if muAO == 190 || (muAO ~= 190 && modelEE < min_modelEE)
+    fprintf('Avg. model estimation error:\t%0.1f.\n\n', modelEE);
+
+    % Save current minimum error and corresponding optimal muAO.
+    if modelEE < min_modelEE
         min_modelEE = modelEE;
         opt_muAO = muAO;
     end
 end
 
-fprintf('Optimal muAO is %d ms.\n', opt_muAO);
+fprintf('For ExpR = %d, optimal muAO is %d ms.\n', ExpR, opt_muAO);
 
 % Notes to METHODS:
 % - Estimates of the perceptual shift in action timing alone was sufficient to
 %   indicate the optimal muAO.
-% - The optimal muAO for Experiment 1 (Haggard et al.) is 230 ms.
-% - Retain this same muAO value for Experiment 2 (Wolpe et al.).
+% - The optimal muAO for Experiment 1 (Haggard et al., 2002) is 230 ms.
+% - Retain this same muAO value for Experiment 2 (Wolpe et al., 2013).
