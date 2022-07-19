@@ -65,6 +65,7 @@ A few semantic changes aim to increase code clarity and flexibility:
 - Change and add headers to clarify licensing (make REUSE compliant).
 - CCE computation: Drop a for-loop and refactor computation of terms.
 - Add function `soa_IBoptimalPXi1.m` to avoid code duplication.
+- Unify the three lookup functions `soa_IB*.m` with more robust switch/case and paper references.
 
 The rest are opinionated, cosmetic changes to subjectively increase readability.
 
