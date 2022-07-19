@@ -59,6 +59,7 @@ The following auxiliary scripts are called by the main scripts described above:
 - [soa_plotBehaviors.m](soa_plotBehaviors.m)
 - [soa_Sigmoid.m](soa_Sigmoid.m)
 - [soa_IBoptimalPXi1.m](soa_IBoptimalPXi1.m)
+- [soa_computeCCE.m](soa_computeCCE.m)
 
 
 ### References

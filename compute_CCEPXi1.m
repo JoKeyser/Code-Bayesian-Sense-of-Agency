@@ -43,10 +43,6 @@ sigmaAO = 10;
 % Interval length in consideration (in ms).
 T = 250;  % large enough but finite constant
 
-% Compute helper terms for CCE computation (see Methods).
-Z1 = sqrt(2 * pi) * sigmaAO * T;
-Z0 = T^2;
-
 % Data Matrices
 LB = 0.0;
 INC = 0.1;
@@ -64,24 +60,14 @@ for CondBO = 1:numCond
     Vec_tauO = dlmread(fnametauO);
 
     % Get reported empirical baseline parameters for this experiment condition.
-    [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
-
-    % Compute total standard deviation for CCE computation (see Methods).
-    sigmaTot = sqrt(sigmaA^2 + sigmaO^2 + sigmaAO^2);
+    [~, sigmaA, ~, sigmaO] = soa_IBexperiment(ExpR, CondBO);
 
     indxPXi1 = size_pXi1 + 1;
 
     for PXi_1 = UB:-INC:LB
-
-        % Compute CCE (see Methods).
-        PXi_0 = 1 - PXi_1;
-        Theta = log((PXi_1 * Z0) / (PXi_0 * Z1));
-        Vec_X = Theta ...
-            - ((Vec_tauO - Vec_tauA - muAO) .^ 2 ./ (2 * sigmaTot^2)) ...
-            + log(sigmaAO / sigmaTot);
-        Vec_CCE = ...
-            (sigmaTot / (2 * pi * sigmaA * sigmaO * sigmaAO)) ...
-            .* soa_Sigmoid(Vec_X);
+        % Compute the Confidence on Causal Estimate (CCE).
+        Vec_CCE = soa_computeCCE(Vec_tauA, Vec_tauO, PXi_1, sigmaA, sigmaO, ...
+            sigmaAO, muAO, T);
 
         uCCE = mean(Vec_CCE);
         sdCCE = std(Vec_CCE);

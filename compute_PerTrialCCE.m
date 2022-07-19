@@ -41,17 +41,12 @@ sigmaAO = 10;
 % Interval length in consideration
 T = 250;  % large enough but finite constant (see Methods)
 
-% Compute helper terms for CCE computation (see Methods).
-Z1 = sqrt(2 * pi) * sigmaAO * T;
-Z0 = T^2;
-
 % Data Matrices
 Vec_CCE = zeros(numCond, tauInstances);
 Vec_tauI = zeros(numCond, tauInstances);
 Vec_Pc = zeros(numCond, tauInstances);
 
 for CondBO = 1:numCond
-
     % Read from files values tauA and tauO (sampled from Gaussian distribution).
     fnametauA = sprintf('Exp%dCond%d_Vec_tauA.csv', ExpR, CondBO);
     fnametauO = sprintf('Exp%dCond%d_Vec_tauO.csv', ExpR, CondBO);
@@ -59,23 +54,14 @@ for CondBO = 1:numCond
     Vec_tauO = dlmread(fnametauO);
 
     % Get reported empirical baseline parameters for this experiment condition.
-    [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
-
-    % Compute total standard deviation for CCE computation (see Methods).
-    sigmaTot = sqrt(sigmaA^2 + sigmaO^2 + sigmaAO^2);
+    [~, sigmaA, ~, sigmaO] = soa_IBexperiment(ExpR, CondBO);
 
     % Simulate with the previously fitted optimal values of P(Xi=1).
     PXi_1 = soa_IBoptimalPXi1(ExpR, CondBO);
-    PXi_0 = 1 - PXi_1;
 
-    % Compute CCE (see Methods).
-    Theta = log((PXi_1 * Z0) / (PXi_0 * Z1));
-    Vec_X = Theta ...
-        - ((Vec_tauO - Vec_tauA - muAO) .^ 2 ./ (2 * sigmaTot^2)) ...
-        + log(sigmaAO / sigmaTot);
-    Vec_CCE(CondBO, :) = ...
-        (sigmaTot / (2 * pi * sigmaA * sigmaO * sigmaAO)) ...
-        .* soa_Sigmoid(Vec_X);
+    % Compute the Confidence on Causal Estimate (CCE).
+    Vec_CCE(CondBO, :) = soa_computeCCE(Vec_tauA, Vec_tauO, PXi_1, ...
+        sigmaA, sigmaO, sigmaAO, muAO, T);
 
     Vec_tauI(CondBO, :) = Vec_tauO - Vec_tauA;
 end
