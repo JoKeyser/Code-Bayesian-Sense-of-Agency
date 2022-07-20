@@ -6,6 +6,10 @@
 %            RIKEN Center for Brain Science
 % License: CC-BY-4.0
 % Changes by: Johannes Keyser, please refer to changelog.md
+%
+% SPDX-FileCopyrightText: 2019 Roberto Legaspi and Taro Toyoizumi
+%
+% SPDX-License-Identifier: CC-BY-4.0
 
 function [fnameTauA, fnameTauO] = soa_getFileNames(experiment, condition)
 
