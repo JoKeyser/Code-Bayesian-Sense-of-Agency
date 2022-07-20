@@ -66,7 +66,7 @@ A few semantic changes aim to increase code clarity and flexibility:
 - CCE computation: Drop a for-loop and refactor computation of terms.
 - Add function `soa_IBoptimalPXi1.m` to avoid code duplication.
 - Unify the three lookup functions `soa_IB*.m` with more robust switch/case and paper references.
-- Move repeated CCE computations into its own function `soa_computeCCE.m`.
+- Move repeated computations of CCE into function `soa_computeCCE.m` and of perceptual temporal shifts into function `soa_computePrcShft.m`.
 
 The rest are opinionated, cosmetic changes to subjectively increase readability and to avoid code repetitions.
 
@@ -79,6 +79,6 @@ The rest are opinionated, cosmetic changes to subjectively increase readability 
 - Appease Matlab's linter.
 - Replace multi-line comments with single-line comments.
 - Replace `tao` with `tau` if referring to the Greek letter, to avoid confusion with A/O for action/outcome.
-- Add comments to `find_muAO.m` and make output more readable.
-- Prettify sample statistics printout from `create_SimulationData.m`.
+- Add explanatory comments and paper references.
+- Prettify all printouts to the console.
 - Add helper functions `soa_getFileNames.m` and `soa_loadTauSamples.m` for sample file handling.

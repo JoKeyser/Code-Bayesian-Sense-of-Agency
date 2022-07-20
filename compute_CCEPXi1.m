@@ -17,14 +17,11 @@ clearvars()
 clc()
 close('all')
 
-% Graph display fonts.
+% Plot settings.
 fontsize = 14;
 sizeBin = 200;
 
 %%% Simulation Settings
-% Set number of tauA and tauO instances (loaded from pre-generated file)
-tauInstances = 35000;
-
 % Choose experimental set-up.
 %   ExpR = 1: Haggard et al. (2002), numCond = 3; (Vol, Invol, Sham)
 %   ExpR = 2: Wolpe et al. (2013),   numCond = 3; (Low, Int, High)
@@ -41,15 +38,15 @@ muAO = 230;
 sigmaAO = 10;
 
 % Interval length in consideration (in ms).
-T = 250;  % large enough but finite constant
+T = 250;  % large enough but finite constant for normalization (see Methods)
 
-% Data Matrices
+% Initialize data matrices.
 LB = 0.0;
 INC = 0.1;
 UB = 1.0;
 arrPXi1 = LB:INC:UB;
 size_pXi1 = numel(arrPXi1);
-arrCCE = zeros(numCond, size_pXi1);
+arrCCE = nan(numCond, size_pXi1);
 
 for CondBO = 1:numCond
 
@@ -65,14 +62,14 @@ for CondBO = 1:numCond
         % Compute the Confidence on Causal Estimate (CCE).
         Vec_CCE = soa_computeCCE(Vec_tauA, Vec_tauO, PXi_1, sigmaA, sigmaO, ...
             sigmaAO, muAO, T);
-
         uCCE = mean(Vec_CCE);
         sdCCE = std(Vec_CCE);
-        fprintf('Condition %d\t P(Xi=1): %0.2f\n', CondBO, PXi_1);
-        fprintf('CCE        :\t %0.2e(%0.2e)\n', uCCE, sdCCE);
+        fprintf('Condition %d, P(Xi=1) = %.1f\n', CondBO, PXi_1);
+        fprintf(' CCE mean (SD): %.2e (%.2e)\n', uCCE, sdCCE);
         indxPXi1 = indxPXi1 - 1;
         arrCCE(CondBO, indxPXi1) = uCCE;
     end
+    fprintf('------------------------------------\n');
 end
 
 % Plot and store CCE as function of causal prior strength.

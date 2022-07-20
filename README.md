@@ -53,15 +53,16 @@ The following auxiliary scripts are called by the main scripts described above:
 
 - [soa_IBexperiment.m](soa_IBexperiment.m)
 - [soa_IBTargets.m](soa_IBTargets.m)
+- [soa_IBoptimalPXi1.m](soa_IBoptimalPXi1.m)
 - [soa_sortMatrices.m](soa_sortMatrices.m)
 - [soa_plotPrcShfts.m](soa_plotPrcShfts.m)
 - [soa_plotErrorBars.m](soa_plotErrorBars.m)
 - [soa_plotBehaviors.m](soa_plotBehaviors.m)
 - [soa_Sigmoid.m](soa_Sigmoid.m)
-- [soa_IBoptimalPXi1.m](soa_IBoptimalPXi1.m)
+- [soa_computePrcShft.m](soa_computePrcShft.m)
 - [soa_computeCCE.m](soa_computeCCE.m)
 - [soa_getFileNames.m](soa_getFileNames.m)
-- [soa_loadTauSamples.m](soa_loadTauSamples.m])
+- [soa_loadTauSamples.m](soa_loadTauSamples.m)
 
 ### References
 

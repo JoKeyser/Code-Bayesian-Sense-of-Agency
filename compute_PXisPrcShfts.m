@@ -19,43 +19,45 @@ clearvars()
 clc()
 close('all')
 
-% Graph display fonts
+% Plot settings.
 fontsize = 14;
 sizeBin = 200;
 
-% Simulation settings
-tauInstances = 35000;  % Number of tauA and tauO instances to be generated
-
+%%% Simulation Settings
 % Choose experimental set-up.
 %   ExpR = 1: Haggard et al. (2002), numCond = 3; (Vol, Invol, Sham)
 %   ExpR = 2: Wolpe et al. (2013),   numCond = 3; (Low, Int, High)
 ExpR = 1;
 numCond = 3;
 
-% Actual physical stimulus timings
+% Actual physical stimulus timings.
 tAp = 0;
 dist_tAtO = 250;
 tOp = tAp + dist_tAtO;
 
-% Optimal condition-independent parameters
+% Optimal condition-independent parameters.
 muAO = 230;
 sigmaAO = 10;
 
-% Interval length in consideration
-T = 250;  % large enough but finite constant
+% Interval length in consideration (in ms).
+T = 250;  % large enough but finite constant for normalization (see Methods)
 
-% Data Matrices
-LB = 0.0; INC = 0.1; UB = 1.0;
+% Set range of values for P(Xi=1).
+LB = 0.0;  % lower bound
+INC = 0.1;  % increment
+UB = 1.0;  % upper bound
 arrPXi1 = LB:INC:UB;
+
+% Initialize data matrices.
 size_pXi1 = numel(arrPXi1);
-arrPrcShftA = zeros(numCond,size_pXi1);
-arrPrcShftO = zeros(numCond,size_pXi1);
-arrAOBinding = zeros(numCond,size_pXi1);
+arrPrcShftA = nan(numCond, size_pXi1);
+arrPrcShftO = nan(numCond, size_pXi1);
+arrAOBinding = nan(numCond, size_pXi1);
 
 for CondBO = 1:numCond
 
     % Load the saved samples tauA and tauO for this experiment condition.
-    [Vec_tauA, Vec_tauO] = soa_loadTauSamples(ExpR, CondBO);
+    [Vec_tauA, Vec_tauO, tauInstances] = soa_loadTauSamples(ExpR, CondBO);
 
     % Get reported empirical baseline parameters for this experiment condition.
     [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
@@ -63,62 +65,48 @@ for CondBO = 1:numCond
     indxPXi1 = size_pXi1 + 1;
 
     for PXi_1 = UB:-INC:LB
-        PXi_0 = 1 - PXi_1;
 
-        % Matrices to track optimal action and outcome estimates
-        Vec_PrcShftA = zeros(1, tauInstances);
-        Vec_PrcShftO = zeros(1, tauInstances);
-        Vec_AOBinding = zeros(1, tauInstances);
+        % Initialize matrices to save shifts in perceived action and outcome.
+        Vec_PrcShftA = nan(1, tauInstances);
+        Vec_PrcShftO = nan(1, tauInstances);
+        Vec_AOBinding = nan(1, tauInstances);
 
+        % Simulate individual trials with a single perceived tauA and tauO.
         for indx_tau = 1:tauInstances
-
-            % Do for each pair of tauA and tauO
+            % Compute model estimates of tA, tO and compare to tauA, tauO.
             tauA = Vec_tauA(indx_tau);
             tauO = Vec_tauO(indx_tau);
-
-            % Compute for the posterior-ratio (see Methods)
-            Z1 = sqrt(2 * pi) * sigmaAO * T;
-            Z0 = T^2;
-            Theta = log((PXi_1 * Z0) / (PXi_0 * Z1));
-            sigmaTot2 = sigmaA^2 + sigmaO^2 + sigmaAO^2;
-            r = exp(Theta - ((tauO - tauA - muAO)^2 / (2 * sigmaTot2)));
-
-            % Compute for strength of temporal binding (Eq. 5)
-            if r > 1  % causal case
-                tAhat = tauA + (sigmaA^2 / sigmaTot2) * (tauO - tauA - muAO);
-                tOhat = tauO - (sigmaO^2 / sigmaTot2) * (tauO - tauA - muAO);
-                Xihat = 1;
-            else  % acausal case
-                tAhat = tauA;
-                tOhat = tauO;
-                Xihat = 0;
-            end
-            
-            Vec_PrcShftA(1, indx_tau) = tAhat - tauA;
-            Vec_PrcShftO(1, indx_tau) = tOhat - tauO;
-            Vec_AOBinding(1, indx_tau) = 250 + (tOhat - tauO) - (tAhat - tauA);
+            [tAhat, tOhat, Xihat] = soa_computePrcShft(tauA, tauO, PXi_1, ...
+                sigmaA, sigmaO, sigmaAO, muAO, T);
+            Vec_PrcShftA(indx_tau) = tAhat - tauA;
+            Vec_PrcShftO(indx_tau) = tOhat - tauO;
+            % FIXME: What does 250 mean in line below? Replace with variable.
+            Vec_AOBinding(indx_tau) = 250 + (tOhat - tauO) - (tAhat - tauA);
         end
 
-        uPrcShftA = mean(Vec_PrcShftA(:));
-        sdPrcShftA = std(Vec_PrcShftA(:));
-        uPrcShftO = mean(Vec_PrcShftO(:));
-        sdPrcShftO = std(Vec_PrcShftO(:));
-        uAOBinding = mean(Vec_AOBinding(:));
-        sdAOBinding = std(Vec_AOBinding(:));
-
-        % Compute model estimation errors given the reported empirical results
-        [targPrcShftA, targPrcShftO] = soa_IBTargets(ExpR, CondBO);
-
+        % Compute mean and SD over all simulated trials.
+        uPrcShftA = mean(Vec_PrcShftA);
+        uPrcShftO = mean(Vec_PrcShftO);
+        uAOBinding = mean(Vec_AOBinding);
+        sdPrcShftA = std(Vec_PrcShftA);
+        sdPrcShftO = std(Vec_PrcShftO);
+        sdAOBinding = std(Vec_AOBinding);
+        % Round mean shifts to full milliseconds.
         ruVec_PrcShftA = round(uPrcShftA);
         ruVec_PrcShftO = round(uPrcShftO);
+
+        % Compute model estimation errors w.r.t. the reported empirical results.
+        [targPrcShftA, targPrcShftO] = soa_IBTargets(ExpR, CondBO);
         errPrcShftA = abs(ruVec_PrcShftA - targPrcShftA);
         errPrcShftO = abs(ruVec_PrcShftO - targPrcShftO);
 
-        fprintf('Condition %d  \t P(Xi=1): %0.2f\n', CondBO, PXi_1);
-        fprintf('uPercShfts   :\t %O.2f(%0.2F)\t %0.1f(%0.1f)\n', ...
+        % Print key statistics to console.
+        fprintf('Condition %d, P(Xi=1) = %0.1f\n', CondBO, PXi_1);
+        fprintf(' Model-predicted mean (SD) perceptual shifts:\n');
+        fprintf(' Action %.1f (%.1f) ms,  Outcome %.1f (%.1f) ms.\n', ...
             uPrcShftA, sdPrcShftA, uPrcShftO, sdPrcShftO);
-        fprintf('Error in action  perceptual shift: %0.2f\n', errPrcShftA);
-        fprintf('Error in outcome perceptual shift: %0.2f\n\n', errPrcShftO);
+        fprintf(' Abs. error of modeled versus reported perceptual shifts:\n')
+        fprintf(' Action %d ms,  Outcome %d ms.\n\n', errPrcShftA, errPrcShftO);
 
         indxPXi1 = indxPXi1 - 1;
 
@@ -126,7 +114,7 @@ for CondBO = 1:numCond
         arrPrcShftO(CondBO, indxPXi1) = uPrcShftO;
         arrAOBinding(CondBO, indxPXi1) = uAOBinding;
     end
-    fprintf('\n');
+    fprintf('--------------------------------------------------------\n\n');
 end
 
 % Plot and store the perceptual shifts and action-outcome binding
@@ -142,7 +130,7 @@ ylabel('Perceptual shift intervals (ms)')
 fnamePrcShft = sprintf('Exp%d_PXisPrcShfts.png', ExpR);
 saveas(gcf(), fnamePrcShft);
 
-% Store the perceptual shifts
+% Store the perceptual shifts to file.
 fnamePrcShftA = sprintf('Exp%d_arrPrcShftA.csv', ExpR);
 fnamePrcShftO = sprintf('Exp%d_arrPrcShftO.csv', ExpR);
 dlmwrite(fnamePrcShftA, arrPrcShftA, 'delimiter', ',');

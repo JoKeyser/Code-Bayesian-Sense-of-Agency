@@ -18,14 +18,11 @@ clearvars()
 clc()
 close('all')
 
-% Graph display fonts.
+% Plot settings.
 fontsize = 14;
 sizeBin = 200;
 
 %%% Simulation Conditions
-% Set number of tauA and tauO instances to be generated.
-tauInstances = 35000;
-
 % Choose experimental set-up.
 %   ExpR = 1: Haggard et al. (2002), numCond = 3; (Vol, Invol, Sham)
 %   ExpR = 2: Wolpe et al. (2013),   numCond = 3; (Low, Int, High)
@@ -42,50 +39,36 @@ muAO = 230;
 sigmaAO = 10;
 
 % Interval length in consideration (in ms).
-T = 250;  % large enough but finite constant
+T = 250;  % large enough but finite constant for normalization (see Methods)
 
-% Data Matrices
-Vec_PrcShftA = zeros(numCond, tauInstances);
-Vec_PrcShftO = zeros(numCond, tauInstances);
-Vec_tauI = zeros(numCond, tauInstances);
-Vec_OpPrcShft = zeros(numCond, tauInstances);
-Vec_BsPrcShft = zeros(numCond, tauInstances);
+% Initialize data matrices.
+tauInstances = 35000;  % expected number of tauA and tauO instances/samples
+Vec_PrcShftA = nan(numCond, tauInstances);
+Vec_PrcShftO = nan(numCond, tauInstances);
+Vec_tauI = nan(numCond, tauInstances);
+Vec_OpPrcShft = nan(numCond, tauInstances);
+Vec_BsPrcShft = nan(numCond, tauInstances);
 
 for CondBO = 1:numCond
 
     % Load the saved samples tauA and tauO for this experiment condition.
-    [Vec_tauA, Vec_tauO] = soa_loadTauSamples(ExpR, CondBO);
+    [Vec_tauA, Vec_tauO, sample_size] = soa_loadTauSamples(ExpR, CondBO);
+    assert(sample_size == tauInstances, 'Loaded unexpected number of samples')
 
     % Get reported empirical baseline parameters for this experiment condition.
-    [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);
+    [~, sigmaA, ~, sigmaO] = soa_IBexperiment(ExpR, CondBO);
 
     % Simulate with the previously fitted optimal values of P(Xi=1).
     PXi_1 = soa_IBoptimalPXi1(ExpR, CondBO);
-    PXi_0 = 1 - PXi_1;
 
+	% Simulate individual trials with a single perceived tauA and tauO.
     for indx_tau = 1:tauInstances
 
-        % Do for each pair of tauA and tauO
         tauA = Vec_tauA(indx_tau);
         tauO = Vec_tauO(indx_tau);
-
-        % Compute for the posterior-ratio (see Methods)
-        Z1 = sqrt(2 * pi) * sigmaAO * T;
-        Z0 = T^2;
-        Theta = log((PXi_1 * Z0) / (PXi_0 * Z1));
-        sigmaTot2 = sigmaA^2 + sigmaO^2 + sigmaAO^2;
-        r = exp(Theta - ((tauO - tauA - muAO)^2 / (2 * sigmaTot2)));
-
-        % Compute for strength of temporal binding (Eq. 5)
-        if r > 1  % causal case
-            tAhat = tauA + (sigmaA^2 / sigmaTot2) * (tauO - tauA - muAO);
-            tOhat = tauO - (sigmaO^2 / sigmaTot2) * (tauO - tauA - muAO);
-            Xihat = 1;
-        else  % acausal case
-            tAhat = tauA;
-            tOhat = tauO;
-            Xihat = 0;
-        end
+        
+        [tAhat, tOhat, Xihat] = soa_computePrcShft(tauA, tauO, PXi_1, ...
+            sigmaA, sigmaO, sigmaAO, muAO, T);
 
         Vec_PrcShftA(CondBO, indx_tau) = tAhat - tauA;
         Vec_PrcShftO(CondBO, indx_tau) = tOhat - tauO;
@@ -96,7 +79,7 @@ for CondBO = 1:numCond
 end
 
 % Plot and store the perceptual shifts
-sortedtauI = Vec_tauI;
+sortedtauI = nan(size(Vec_tauI));
 [sortedtauI(1, :), sortIdx1] = sort(Vec_tauI(1, :));
 [sortedtauI(2, :), sortIdx2] = sort(Vec_tauI(2, :));
 [sortedtauI(3, :), sortIdx3] = sort(Vec_tauI(3, :));

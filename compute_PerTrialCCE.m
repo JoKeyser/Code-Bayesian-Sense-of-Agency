@@ -16,13 +16,11 @@ clearvars()
 clc()
 close('all')
 
-% Graph display fonts
+% Plot settings.
 fontsize = 14;
 sizeBin = 200;
 
-% Simulation settings
-tauInstances = 35000;  % Number of tauA and tauO instances (loaded from file)
-
+%%% Simulation settings
 % Choose experimental set-up.
 %   ExpR = 1: Haggard et al. (2002), numCond = 3; (Vol, Invol, Sham)
 %   ExpR = 2: Wolpe et al. (2013),   numCond = 3; (Low, Int, High)
@@ -39,17 +37,19 @@ muAO = 230;
 sigmaAO = 10;
 
 % Interval length in consideration
-T = 250;  % large enough but finite constant (see Methods)
+T = 250;  % large enough but finite constant for normalization (see Methods)
 
-% Data Matrices
-Vec_CCE = zeros(numCond, tauInstances);
-Vec_tauI = zeros(numCond, tauInstances);
-Vec_Pc = zeros(numCond, tauInstances);
+% Initialize data matrices.
+tauInstances = 35000;  % expected number of tauA and tauO instances/samples
+Vec_CCE = nan(numCond, tauInstances);
+Vec_tauI = nan(numCond, tauInstances);
+Vec_Pc = nan(numCond, tauInstances);
 
 for CondBO = 1:numCond
 
     % Load the saved samples tauA and tauO for this experiment condition.
-    [Vec_tauA, Vec_tauO] = soa_loadTauSamples(ExpR, CondBO);
+    [Vec_tauA, Vec_tauO, sample_size] = soa_loadTauSamples(ExpR, CondBO);
+    assert(sample_size == tauInstances, 'Loaded unexpected number of samples')
 
     % Get reported empirical baseline parameters for this experiment condition.
     [~, sigmaA, ~, sigmaO] = soa_IBexperiment(ExpR, CondBO);
@@ -65,7 +65,7 @@ for CondBO = 1:numCond
 end
 
 % Plot and store trial-to-trial CCE as function of temporal disparity
-sortedtauI = Vec_tauI;
+sortedtauI = nan(size(Vec_tauI));
 [sortedtauI(1, :), sortIndx1] = sort(Vec_tauI(1, :));
 [sortedtauI(2, :), sortIndx2] = sort(Vec_tauI(2, :));
 [sortedtauI(3, :), sortIndx3] = sort(Vec_tauI(3, :));

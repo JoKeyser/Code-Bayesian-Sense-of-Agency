@@ -18,7 +18,6 @@ clc()
 close('all')
 
 %%% Simulation settings
-
 % Choose experimental set-up.
 %   ExpR = 1: Haggard et al. (2002), numCond = 3; (Vol, Invol, Sham)
 %   ExpR = 2: Wolpe et al. (2013),   numCond = 3; (Low, Int, High)
@@ -30,14 +29,12 @@ tAp = 0;
 dist_tAtO = 250;
 tOp = tAp + dist_tAtO;
 
-% To obtain discernible perceptual shifts, sigmaAO should be small:
+% To obtain discernible perceptual shifts, sigmaAO should be small (in ms):
 sigmaAO = 10;
 
-% Initialize minimal model error, to find optimal fitting muAO.
-min_modelEE = Inf;
-
-% Perform a grid search for optimal muAO.
-muAO_grid = 190:10:250;
+% Perform a 1-dimensional grid search for optimally fitting muAO.
+min_modelEE = Inf;  % initialize minimal model error
+muAO_grid = 190:10:250;  % initialize search grid
 
 for muAO = muAO_grid
 
@@ -56,8 +53,8 @@ for muAO = muAO_grid
         sigmaTot2 = sigmaA^2 + sigmaO^2 + sigmaAO^2;
 
         % Compute the action and outcome perceptual shifts (Eq. 5)
-        Vec_PrcShftA = +(sigmaA^2 / sigmaTot2) * (Vec_tauO - Vec_tauA - muAO);
-        Vec_PrcShftO = -(sigmaO^2 / sigmaTot2) * (Vec_tauO - Vec_tauA - muAO);
+        Vec_PrcShftA = +(sigmaA^2 / sigmaTot2) .* (Vec_tauO - Vec_tauA - muAO);
+        Vec_PrcShftO = -(sigmaO^2 / sigmaTot2) .* (Vec_tauO - Vec_tauA - muAO);
         uVec_PrcShftA = mean(Vec_PrcShftA);
         uVec_PrcShftO = mean(Vec_PrcShftO);
         sdVec_PrcShftA = std(Vec_PrcShftA);
