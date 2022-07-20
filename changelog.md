@@ -68,7 +68,7 @@ A few semantic changes aim to increase code clarity and flexibility:
 - Unify the three lookup functions `soa_IB*.m` with more robust switch/case and paper references.
 - Move repeated CCE computations into its own function `soa_computeCCE.m`.
 
-The rest are opinionated, cosmetic changes to subjectively increase readability.
+The rest are opinionated, cosmetic changes to subjectively increase readability and to avoid code repetitions.
 
 - More consistent use of whitespaces; e.g. add spaces before commas and around inline operators, etc.
 - Add newlines and reorder to get a single instruction per line.
@@ -80,4 +80,5 @@ The rest are opinionated, cosmetic changes to subjectively increase readability.
 - Replace multi-line comments with single-line comments.
 - Replace `tao` with `tau` if referring to the Greek letter, to avoid confusion with A/O for action/outcome.
 - Add comments to `find_muAO.m` and make output more readable.
-
+- Prettify sample statistics printout from `create_SimulationData.m`.
+- Add helper functions `soa_getFileNames.m` and `soa_loadTauSamples.m` for sample file handling.

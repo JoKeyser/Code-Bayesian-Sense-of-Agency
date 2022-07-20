@@ -18,7 +18,7 @@ clc()
 close('all')
 
 % Uncomment to make random number generation repeatable:
-% rng(1, 'twister');
+rng(1, 'twister');
 
 % Choose whether to use the Statistics and Machine Learning Toolbox; the
 % original version of the code uses toolbox functions to generate and
@@ -72,17 +72,17 @@ for CondBO = 1:numCond
     stdVectauO = std(Vec_tauO);
 
     % Print sample statistics and store generated simulation data.
-    fprintf('\n============= tau DataSet Exp %d Cond %d ===============\n', ...
+    fprintf('\n========= tau sample statistics, exp %d cond %d =========\n', ...
         ExpR, CondBO);
-    fprintf('tauA [%0.2f, %0.2f] tauO [%0.2f, %0.2f]\n', ...
+    fprintf('ranges      tauA [%.1f, %.1f],  tauO [%.1f, %.1f]\n', ...
         tauA_min, tauA_max, tauO_min, tauO_max);
-    fprintf('tau statistics: %0.2f (%0.2f)\t %0.2f (%0.2f)\n', ...
+    fprintf('means (SDs) tauA %.1f (%.1f),  tauO %.1f (%.1f)\n', ...
         uVectauA, stdVectauA, uVectauO, stdVectauO);
-    fprintf('tauA elements: %d tauO elements: %d\n', ...
+    fprintf('sample size tauA %d,  tauO %d\n', ...
         sizeVec_tauA, sizeVec_tauO);
-    fprintf('==============================================\n');
-    fnametauA = sprintf('Exp%dCond%d_Vec_tauA.csv', ExpR, CondBO);
-    fnametauO = sprintf('Exp%dCond%d_Vec_tauO.csv', ExpR, CondBO);
+    fprintf('=======================================================\n');
+    % Save samples to file for other scripts to load.
+    [fnametauA, fnametauO] = soa_getFileNames(ExpR, CondBO);
     dlmwrite(fnametauA, Vec_tauA, 'delimiter', ',');
     dlmwrite(fnametauO, Vec_tauO, 'delimiter', ',');
 end

@@ -53,11 +53,8 @@ Vec_BsPrcShft = zeros(numCond, tauInstances);
 
 for CondBO = 1:numCond
 
-    % Read from files values tauA and tauO (sampled from Gaussian distribution).
-    fnametauA = sprintf('Exp%dCond%d_Vec_tauA.csv', ExpR, CondBO);
-    fnametauO = sprintf('Exp%dCond%d_Vec_tauO.csv', ExpR, CondBO);
-    Vec_tauA = dlmread(fnametauA);
-    Vec_tauO = dlmread(fnametauO);
+    % Load the saved samples tauA and tauO for this experiment condition.
+    [Vec_tauA, Vec_tauO] = soa_loadTauSamples(ExpR, CondBO);
 
     % Get reported empirical baseline parameters for this experiment condition.
     [muA, sigmaA, muO, sigmaO] = soa_IBexperiment(ExpR, CondBO);

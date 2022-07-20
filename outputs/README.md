@@ -52,23 +52,23 @@ Exp1Cond3_Vec_tauO.csv
 The Matlab console output was:
 
 ```
-============= tau DataSet Exp 1 Cond 1 ===============
-tauA [-253.70, 257.35] tauO [-10.93, 585.29]
-tau statistics: 6.11 (66.17)	 265.21 (72.04)
-tauA elements: 35000 tauO elements: 35000
-==============================================
+========= tau sample statistics, exp 1 cond 1 =========
+ranges      tauA [-253.7, 257.3],  tauO [-10.9, 585.3]
+means (SDs) tauA 6.1 (66.2),  tauO 265.2 (72.0)
+sample size tauA 35000,  tauO 35000
+=======================================================
 
-============= tau DataSet Exp 1 Cond 2 ===============
-tauA [-266.38, 467.69] tauO [-38.08, 559.54]
-tau statistics: 82.68 (83.52)	 265.42 (72.30)
-tauA elements: 35000 tauO elements: 35000
-==============================================
+========= tau sample statistics, exp 1 cond 2 =========
+ranges      tauA [-266.4, 467.7],  tauO [-38.1, 559.5]
+means (SDs) tauA 82.7 (83.5),  tauO 265.4 (72.3)
+sample size tauA 35000,  tauO 35000
+=======================================================
 
-============= tau DataSet Exp 1 Cond 3 ===============
-tauA [-356.94, 383.36] tauO [-23.22, 537.68]
-tau statistics: 32.86 (78.38)	 264.61 (71.84)
-tauA elements: 35000 tauO elements: 35000
-==============================================
+========= tau sample statistics, exp 1 cond 3 =========
+ranges      tauA [-356.9, 383.4],  tauO [-23.2, 537.7]
+means (SDs) tauA 32.9 (78.4),  tauO 264.6 (71.8)
+sample size tauA 35000,  tauO 35000
+=======================================================
 ```
 
 
@@ -405,23 +405,23 @@ Exp2Cond3_Vec_tauO.csv
 The Matlab console output was:
 
 ```
-============= tau DataSet Exp 2 Cond 1 ===============
-tauA [-303.11, 277.62] tauO [51.22, 556.36]
-tau statistics: -7.88 (75.19)	 285.18 (61.03)
-tauA elements: 35000 tauO elements: 35000
-==============================================
+========= tau sample statistics, exp 2 cond 1 =========
+ranges      tauA [-303.1, 277.6],  tauO [51.2, 556.4]
+means (SDs) tauA -7.9 (75.2),  tauO 285.2 (61.0)
+sample size tauA 35000,  tauO 35000
+=======================================================
 
-============= tau DataSet Exp 2 Cond 2 ===============
-tauA [-323.70, 339.61] tauO [18.18, 566.00]
-tau statistics: -8.29 (75.47)	 296.38 (66.28)
-tauA elements: 35000 tauO elements: 35000
-==============================================
+========= tau sample statistics, exp 2 cond 2 =========
+ranges      tauA [-323.7, 339.6],  tauO [18.2, 566.0]
+means (SDs) tauA -8.3 (75.5),  tauO 296.4 (66.3)
+sample size tauA 35000,  tauO 35000
+=======================================================
 
-============= tau DataSet Exp 2 Cond 3 ===============
-tauA [-381.98, 329.84] tauO [-15.28, 685.85]
-tau statistics: -7.17 (75.37)	 344.51 (89.80)
-tauA elements: 35000 tauO elements: 35000
-==============================================
+========= tau sample statistics, exp 2 cond 3 =========
+ranges      tauA [-382.0, 329.8],  tauO [-15.3, 685.8]
+means (SDs) tauA -7.2 (75.4),  tauO 344.5 (89.8)
+sample size tauA 35000,  tauO 35000
+=======================================================
 ```
 
 ### Output of `find_muAO.m`

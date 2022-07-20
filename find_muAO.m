@@ -46,11 +46,8 @@ for muAO = muAO_grid
 
     for CondBO = 1:numCond
 
-        % Read tauA and tauO from files (sampled from Gaussian distribution).
-        fnametauA = sprintf('Exp%dCond%d_Vec_tauA.csv', ExpR, CondBO);
-        fnametauO = sprintf('Exp%dCond%d_Vec_tauO.csv', ExpR, CondBO);
-        Vec_tauA = dlmread(fnametauA);
-        Vec_tauO = dlmread(fnametauO);
+        % Load the saved samples tauA and tauO for this experiment condition.
+        [Vec_tauA, Vec_tauO] = soa_loadTauSamples(ExpR, CondBO);
 
         % Get empirical baseline parameters for this experiment condition.
         [~, sigmaA, ~, sigmaO] = soa_IBexperiment(ExpR, CondBO);
