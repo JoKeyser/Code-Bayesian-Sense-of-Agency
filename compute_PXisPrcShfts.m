@@ -78,10 +78,13 @@ for CondBO = 1:numCond
             tauO = Vec_tauO(indx_tau);
             [tAhat, tOhat, Xihat] = soa_computePrcShft(tauA, tauO, PXi_1, ...
                 sigmaA, sigmaO, sigmaAO, muAO, T);
-            Vec_PrcShftA(indx_tau) = tAhat - tauA;
-            Vec_PrcShftO(indx_tau) = tOhat - tauO;
-            % FIXME: What does 250 mean in line below? Replace with variable.
-            Vec_AOBinding(indx_tau) = 250 + (tOhat - tauO) - (tAhat - tauA);
+            % Compute perceptual shifts for actions and outcomes separately.
+            prcShiftA = tAhat - tauA;
+            prcShiftO = tOhat - tauO;
+            Vec_PrcShftA(indx_tau) = prcShiftA;
+            Vec_PrcShftO(indx_tau) = prcShiftO;
+            % Compute shift interval between action & outcome w.r.t. true value.
+            Vec_AOBinding(indx_tau) = dist_tAtO + prcShiftO - prcShiftA;
         end
 
         % Compute mean and SD over all simulated trials.
@@ -117,12 +120,14 @@ for CondBO = 1:numCond
     fprintf('--------------------------------------------------------\n\n');
 end
 
-% Plot and store the perceptual shifts and action-outcome binding
+% Plot the perceptual shifts of action and outcome separately.
 figure()
 soa_plotPrcShfts(ExpR, arrPrcShftA, arrPrcShftO, arrPXi1, fontsize);
-fnamePrcShft = sprintf('Exp%d_PXisPrcShfts.png', ExpR);
+ylabel('Perceptual shift actions, outcomes (ms)')
+fnamePrcShft = sprintf('Exp%d_PXisPrcShftsAO.png', ExpR);
 saveas(gcf(), fnamePrcShft);
 
+% Plot shift intervals between action and outcome w.r.t. the true value (fig 2).
 figure()
 lgd = soa_plotBehaviors(ExpR, arrAOBinding, arrPXi1, fontsize, 1);
 set(lgd, 'Location', 'NorthEast')

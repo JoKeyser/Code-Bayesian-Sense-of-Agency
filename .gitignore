@@ -25,7 +25,9 @@
 /Exp2_arrPrcShftA.csv
 /Exp2_arrPrcShftO.csv
 # generated figures from compute_PerTrialPrcShfts.m:
+/Exp1_PXisPrcShftsAO.png
 /Exp1_perTrialPrcShfts.png
+/Exp2_PXisPrcShftsAO.png
 /Exp2_perTrialPrcShfts.png
 # generated figures from compute_CCEPXi1.m
 /Exp1_CCEPXi.png

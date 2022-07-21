@@ -130,16 +130,13 @@ The script generated two data files and a plot:
 ```
 Exp1_arrPrcShftA.csv
 Exp1_arrPrcShftO.csv
+Exp1_PXisPrcShftsAO.png
 Exp1_PXisPrcShfts.png
 ```
 
+<img src="figures/Exp1_PXisPrcShftsAO.png" width=300px />
+<br />
 <img src="figures/Exp1_PXisPrcShfts.png" width=300px />
-
-NOTE: The script generates 2 plots per run, but only stores the second, because the file name is repeated (compare lines 121 and 125 of the transcript, or page 6 of the supplementary code):
-
-```matlab
-fnamePrcShft = sprintf('Exp%d_PXisPrcShfts.png',ExpR);
-```
 
 The console output was:
 
@@ -548,21 +545,18 @@ For ExpR = 2, optimal muAO is 250 ms.
 
 ### Output of `compute_PXisPrcShfts.m`
 
-The script generated two data files and a plot:
+The script generated two data files and two plots:
 
 ```
 Exp2_arrPrcShftA.csv
 Exp2_arrPrcShftO.csv
+Exp2_PXisPrcShftsAO.png
 Exp2_PXisPrcShfts.png
 ```
 
+<img src="figures/Exp2_PXisPrcShftsAO.png" width=300px />
+<br />
 <img src="figures/Exp2_PXisPrcShfts.png" width=300px />
-
-NOTE: The script generates 2 plots per run, but only stores the second, because the file name is repeated (compare lines 121 and 125 of the transcript, or page 6 of the supplementary code):
-
-```matlab
-fnamePrcShft = sprintf('Exp%d_PXisPrcShfts.png',ExpR);
-```
 
 The console output was:
 
