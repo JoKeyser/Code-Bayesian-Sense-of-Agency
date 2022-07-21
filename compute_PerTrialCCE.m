@@ -73,7 +73,7 @@ sortedtauI = nan(size(Vec_tauI));
 sortedCCE = soa_sortMatrices(Vec_CCE, sortIndx1, sortIndx2, sortIndx3);
 lgd = soa_plotErrorBars(ExpR, sortedtauI, sortedCCE, fontsize, 1, sizeBin);
 if ExpR == 2, set(lgd, 'Location', 'NorthEast'), end
-xlabel('P(\xi = 1)')
+xlabel('\tau_O - \tau_A (ms)')
 ylabel('\it CCE')
 fnameCCE = sprintf('Exp%d_perTrialCCE.png', ExpR);
 saveas(gcf(), fnameCCE);
