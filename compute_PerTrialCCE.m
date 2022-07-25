@@ -64,13 +64,11 @@ for CondBO = 1:numCond
     Vec_tauI(CondBO, :) = Vec_tauO - Vec_tauA;
 end
 
-% Plot and store trial-to-trial CCE as function of temporal disparity
-sortedtauI = nan(size(Vec_tauI));
-[sortedtauI(1, :), sortIndx1] = sort(Vec_tauI(1, :));
-[sortedtauI(2, :), sortIndx2] = sort(Vec_tauI(2, :));
-[sortedtauI(3, :), sortIndx3] = sort(Vec_tauI(3, :));
+% Sort CCE w.r.t. the difference tauO - tauA.
+[sortedtauI, sortIndexes] = sort(Vec_tauI, 2);  % sort per row (per condition)
+sortedCCE = soa_sortMatrices(Vec_CCE, sortIndexes);
 
-sortedCCE = soa_sortMatrices(Vec_CCE, sortIndx1, sortIndx2, sortIndx3);
+% Plot trial-to-trial CCE as function of temporal disparity tauO - tauA.
 lgd = soa_plotErrorBars(ExpR, sortedtauI, sortedCCE, fontsize, 1, sizeBin);
 if ExpR == 2, set(lgd, 'Location', 'NorthEast'), end
 xlabel('\tau_O - \tau_A (ms)')

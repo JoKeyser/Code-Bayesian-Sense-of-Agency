@@ -78,16 +78,14 @@ for CondBO = 1:numCond
     end
 end
 
-% Plot and store the perceptual shifts
-sortedtauI = nan(size(Vec_tauI));
-[sortedtauI(1, :), sortIdx1] = sort(Vec_tauI(1, :));
-[sortedtauI(2, :), sortIdx2] = sort(Vec_tauI(2, :));
-[sortedtauI(3, :), sortIdx3] = sort(Vec_tauI(3, :));
-sortedPrcShftA = soa_sortMatrices(Vec_PrcShftA, sortIdx1, sortIdx2, sortIdx3);
-sortedPrcShftO = soa_sortMatrices(Vec_PrcShftO, sortIdx1, sortIdx2, sortIdx3);
-sortedBsPrcShft = soa_sortMatrices(Vec_BsPrcShft, sortIdx1, sortIdx2, sortIdx3);
-sortedOpPrcShft = soa_sortMatrices(Vec_OpPrcShft, sortIdx1, sortIdx2, sortIdx3);
+% Sort all quantities of interest w.r.t. the difference tauO - tauA.
+[sortedtauI, sortIndexes] = sort(Vec_tauI, 2);  % sort per row (per condition)
+sortedPrcShftA = soa_sortMatrices(Vec_PrcShftA, sortIndexes);
+sortedPrcShftO = soa_sortMatrices(Vec_PrcShftO, sortIndexes);
+sortedBsPrcShft = soa_sortMatrices(Vec_BsPrcShft, sortIndexes);
+sortedOpPrcShft = soa_sortMatrices(Vec_OpPrcShft, sortIndexes);
 
+% Plot perceptual shifts as function of temporal disparity tauO - tauA.
 figure('Position', [0, 0, 1200, 1000])
 subplot(2, 2, 1)
 soa_plotErrorBars(ExpR, sortedtauI, sortedPrcShftA, fontsize, 1, sizeBin);

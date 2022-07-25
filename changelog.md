@@ -66,7 +66,8 @@ A few semantic changes aim to increase code clarity and flexibility:
 - CCE computation: Drop a for-loop and refactor computation of terms.
 - Add function `soa_IBoptimalPXi1.m` to avoid code duplication.
 - Unify the three lookup functions `soa_IB*.m` with more robust switch/case and paper references.
-- Move repeated computations of CCE into function `soa_computeCCE.m` and of perceptual temporal shifts into function `soa_computePrcShft.m`.
+- Move repeated code for CCE into function `soa_computeCCE.m` and for perceptual temporal shifts into function `soa_computePrcShft.m`.
+- Generalize function `soa_sortMatrices.m` to other than 3 conditions.
 
 The rest are opinionated, cosmetic changes to subjectively increase readability and to avoid code repetitions.
 
