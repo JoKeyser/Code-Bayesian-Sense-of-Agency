@@ -141,7 +141,7 @@ fnamePrcShftO = sprintf('Exp%d_arrPrcShftO.csv', ExpR);
 dlmwrite(fnamePrcShftA, arrPrcShftA, 'delimiter', ',');
 dlmwrite(fnamePrcShftO, arrPrcShftO, 'delimiter', ',');
 
-% Notes to METHODS:
+% Authors' notes to METHODS:
 % - Estimates of the perceptual shift in action timing alone was sufficient to
 %   indicate the optimal P(Xi=1) value. However, note the following.
 % - Although the optimal P(Xi=1) value for the voluntary and involuntary

@@ -94,7 +94,7 @@ end
 
 fprintf('For ExpR = %d, optimal muAO is %d ms.\n', ExpR, opt_muAO);
 
-% Notes to METHODS:
+% Authors' notes to METHODS:
 % - Estimates of the perceptual shift in action timing alone was sufficient to
 %   indicate the optimal muAO.
 % - The optimal muAO for Experiment 1 (Haggard et al., 2002) is 230 ms.

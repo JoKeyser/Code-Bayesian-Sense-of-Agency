@@ -6,7 +6,7 @@ SPDX-License-Identifier: CC0-1.0
 
 # Executable code: A Bayesian psychophysics model of sense of agency
 
-The intent of this repository is to provide executable Matlab code, derived from the Supplementary Source Codes of the publication:
+This repository provides executable Matlab code, derived from the Supplementary Source Codes of the publication:
 
 Legaspi, Roberto, & Toyoizumi, Taro (2019).  
 A Bayesian psychophysics model of sense of agency.  
@@ -18,38 +18,34 @@ Emails: `{roberto.legaspi, taro.toyoizumi}@riken.jp`
 Please note the following:
 
 - This repository has 2 branches.
-    - Branch `transcript` aims to provide an unchanged transcript of the supplementary code.
-    - Branch `main` aims to provide a more "convenient" version of the code, featuring shorter lines, fixed typos, etc.
+    - Branch `transcript` provides an unchanged transcript of the supplementary code.
+    - Branch `main` provides a slightly refactored and generalized version of the code, typo fixes, etc.
 - Any and all credit should go to the original authors.
-  For legal terms, please refer to [LICENSES](LICENSES).
+  For license terms, please refer to [Licenses](#Licenses).
 
-Please refer to to [changelog.md](changelog.md) for a summary of differences between the files in this repository and the supplementary code of the publication.
+Please refer to [changelog.md](changelog.md) for a summary of differences between the files in this repository and the supplementary code of the publication.
 
 
 ## Usage
 
-These MATLAB scripts generates simulation data and plots the figures from the paper.
+The Matlab scripts generate simulation data to plot the figures from the paper, and additional ones.
+Each script lists its objectives in its header.
+
 The scripts should be executed in the following order:
 
-1. [create_SimulationData.m](create_SimulationData.m).
-2. [find_muAO.m](find_muAO.m).
-3. [compute_PXisPrcShfts.m](compute_PXisPrcShfts.m).
-   The plots that were generated here were shown in Figs. 2 and 5b.
-4. [compute_PerTrialPrcShfts.m](compute_PerTrialPrcShfts.m).
-   The plots were shown in Figs. 3b, 3c, 3d and 3e, as well as 4c and 4d.
-5. [compute_CCEPXi1.m](compute_CCEPXi1.m).
-   The plots that were generated from this were shown in Figs. 4a and 6a.
-6. [compute_PerTrialCCE.m](compute_PerTrialCCE.m).
-   The plots were shown in Figs. 4b and 6b.
+1. [create_SimulationData.m](create_SimulationData.m) draws sensory samples tauA, tauO for the subsequent scripts.
+2. [find_muAO.m](find_muAO.m) performs a grid search for model parameter muAO.
+3. [compute_PXisPrcShfts.m](compute_PXisPrcShfts.m) plots perceptual shifts as function of P(Xi=1), as in figures 2, 5b.
+4. [compute_PerTrialPrcShfts.m](compute_PerTrialPrcShfts.m) plots perceptual shifts as function of difference (tauO − tauA), as in figures 3b-e, 4c-d.
+5. [compute_CCEPXi1.m](compute_CCEPXi1.m) plots the confidence in causal estimate (CCE) as a function of P(Xi=1), as in figures 4a, 6a.
+6. [compute_PerTrialCCE.m](compute_PerTrialCCE.m) plots the CCE as a function of the difference (tauO − tauA), as in figures 4b, 6b.
 
-Each script contains a description and objectives in its header.
-
-Note: To generate the results corresponding to the two intentional binding experiments, you should adjust the variable `Expr`:
+Note: To generate the results corresponding to the two temporal binding experiments, adjust the variable `Expr`:
 
 - Value `Expr = 1` for Haggard et al. (2002), and
 - Value `Expr = 2` for Wolpe et al. (2013).
 
-The following auxiliary scripts are called by the main scripts described above:
+The following helper scripts are called by the main scripts described above:
 
 - [soa_IBexperiment.m](soa_IBexperiment.m)
 - [soa_IBTargets.m](soa_IBTargets.m)
@@ -80,11 +76,14 @@ The following auxiliary scripts are called by the main scripts described above:
 
 ## Licenses
 
-Any and all credit should go to the original authors, see their license terms in [CC-BY-4.0.txt](CC-BY-4.0.txt).
-A short summary is provided on page 11 of the publication.
+Any and all credit should go to the original authors, see their license terms in [LICENSES/CC-BY-4.0.txt](LICENSES/CC-BY-4.0.txt).
+A short summary of the license is provided on page 11 of the [paper](publication/LegaspiAndToyoizumi2019.pdf), and is available at <https://creativecommons.org/licenses/by/4.0/>.
 
 To the extent possible under the law, all additions and changes are placed in the public domain under the CC0-1.0 license.
-Please refer to [CC0-1.0.txt](CC0-1.0.txt) for the legal text.
+Please refer to [LICENSES/CC0-1.0.txt](LICENSES/CC0-1.0.txt) for the legal text.
+You can also read a summary at <https://creativecommons.org/publicdomain/zero/1.0/>.
 
-This repository REUSE compliant, to clarify which parts are under which license.
-For more information, visit <https://reuse.software/>.
+For all text files, the license is listed in its header.
+All files in folder [publication](publication) are licensed under CC-BY-4.0.
+All files in folder [outputs](outputs) are licensed under CC0-1.0.
+This repository is [REUSE compliant](https://reuse.software/).

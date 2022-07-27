@@ -1,16 +1,25 @@
+<!--
+SPDX-FileCopyrightText: 2022 Johannes Keyser
+
+SPDX-License-Identifier: CC0-1.0
+-->
+
+# Script outputs
+
 This log lists the output files, console output and figures on a specific machine.
 The log is intended for you to compare it to your own execution of the code.
 
-NOTE: Before running, Matlab's random seed was set with `rng(1,'twister');`, as suggested in a comment in `create_SimulationData.m`, to make results reproducible.
+Please note the following:
 
-NOTE: The samples were generated with `randn()` instead of `normrnd()` from the Statistics Toolbox, by setting `Flag_Use_Statistics_Toolbox = false`.
-You can compare the outputs here with those in branch `transcript` that used the Toolbox.
-
-NOTE: The scripts were run twice: Once with setting `ExpR = 1` and once with `ExpR = 2`.
+- Before running, Matlab's random seed was set with `rng(1,'twister');`, to make the results reproducible.
+- The samples were generated with `randn()` instead of `normrnd()` from the Statistics Toolbox, by setting `Flag_Use_Statistics_Toolbox = false` in `create_SimulationData.m`.
+  You can compare the outputs here in branch `main` with those in branch `transcript` that used the Toolbox.
+- The scripts were run twice: Once with setting `ExpR = 1` (outputs listed first) and once with `ExpR = 2` (outputs listed below).
 
 The generated data files are saved the in subfolder [generated_data](generated_data).
 The resulting figures are saved in the subfolder [figures](figures).
 
+[[_TOC_]]
 
 ## Settings
 
@@ -28,7 +37,7 @@ MATLAB                                                Version 9.7         (R2019
 ```
 
 The order of script execution was from top to bottom of this log.
-(Which is the same order as in the project README.)
+(The same order as in the project [README](../README.md) file.)
 
 
 ## Outputs with setting `ExpR = 1`
