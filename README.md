@@ -6,7 +6,7 @@ SPDX-License-Identifier: CC0-1.0
 
 # Executable code: A Bayesian psychophysics model of sense of agency
 
-This repository provides executable Matlab code, derived from the Supplementary Source Codes of the publication:
+This repository provides executable Matlab code derived from the Supplementary Source Codes of the publication:
 
 Legaspi, Roberto, & Toyoizumi, Taro (2019).  
 A Bayesian psychophysics model of sense of agency.  
@@ -21,7 +21,7 @@ Please note the following:
     - Branch `transcript` provides an unchanged transcript of the supplementary code.
     - Branch `main` provides a slightly refactored and generalized version of the code, typo fixes, etc.
 - Any and all credit should go to the original authors.
-  For license terms, please refer to [Licenses](#Licenses).
+  For license terms, please refer to [Licenses](#licenses) below.
 
 Please refer to [changelog.md](changelog.md) for a summary of differences between the files in this repository and the supplementary code of the publication.
 
@@ -30,6 +30,7 @@ Please refer to [changelog.md](changelog.md) for a summary of differences betwee
 
 The Matlab scripts generate simulation data to plot the figures from the paper, and additional ones.
 Each script lists its objectives in its header.
+You can inspect the outputs of example runs of each script in folder [outputs](outputs).
 
 The scripts should be executed in the following order:
 
@@ -59,6 +60,7 @@ The following helper scripts are called by the main scripts described above:
 - [soa_computeCCE.m](soa_computeCCE.m)
 - [soa_getFileNames.m](soa_getFileNames.m)
 - [soa_loadTauSamples.m](soa_loadTauSamples.m)
+
 
 ### References
 
